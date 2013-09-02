@@ -1,0 +1,28 @@
+Support:
+--------
+1. Preview only
+2. 800x 600 Resolution 
+3. YUV422 format
+
+
+Code changes:
+-------------
+Files needs to replace/merge with existing freescale kernel(changes can be find with sukumar@aptina.com)
+1. arch/arm/mach-mx6/board-mx6q_sabrelite.c
+2. arch/arm/mach-mx6/pads-mx6_sabrelite.h
+3. drivers/media/video/mxc/capture/Kconfig
+4. drivers/media/video/mxc/capture/mxc_v4l2_capture.c
+5. drivers/media/video/mxc/capture/Makefile
+6. include/media/v4l2-chip-ident.h
+
+
+New files:
+1. drivers/media/video/mxc/capture/mt9d115_mipi.c
+2. drivers/media/video/mxc/capture/mt9d115_mipi.h
+
+Compile:
+--------
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- uImage
+
+cp uImage /BOOT/uImage
+ 
