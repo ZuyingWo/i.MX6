@@ -7,6 +7,8 @@ Support:
 
 Code changes:
 -------------
+Note : Inside your android folder kernel is placed in kernel_imx folder(cd kernel_imx)
+
 Files needs to replace/merge with existing freescale kernel(changes can be find with sukumar@aptina.com)
 1. arch/arm/mach-mx6/board-mx6q_sabrelite.c
 2. arch/arm/mach-mx6/pads-mx6_sabrelite.h
@@ -15,14 +17,36 @@ Files needs to replace/merge with existing freescale kernel(changes can be find 
 5. drivers/media/video/mxc/capture/Makefile
 6. include/media/v4l2-chip-ident.h
 
-
 New files:
 1. drivers/media/video/mxc/capture/mt9d115_mipi.c
 2. drivers/media/video/mxc/capture/mt9d115_mipi.h
+
+Configuration:
+--------------
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- menuconfig
+Select --> Device Driver
+           --> Multimedia Support
+               --> Video Capture Adapters
+                   --> MXC Camera/V4L2 PRP Features support
+                       --> <*> CSI camera support 
+                       --> <*> Aptina MT9D115 camera support
+                       --> <*> Pre-processor Encoder library
+                       --> <*> IPU CSI Encoder library
+Save and Exit config file
 
 Compile:
 --------
 make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- uImage
 
 cp uImage /BOOT/uImage
- 
+
+Boot your device and see Aptina MT9D115 is detectet or not.
+
+Run:
+----
+Use V4L2 app to verify preview. See JIRA : DRV-98 for source code(v4l2.c).
+Compile : gcc -static -o v4l2 v4l2.c
+copy to /SYSTEM/ folder of sd card
+Run: ./v4l2 -m -f 800x600 YUYV -o -c 5
+This will capture 5 preview frame, open in pyuv and verify. 
+
