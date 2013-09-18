@@ -7,8 +7,6 @@ Support:
 
 Code changes:
 -------------
-Note : Inside your android folder kernel is placed in kernel_imx folder(cd kernel_imx)
-
 Files needs to replace/merge with existing freescale kernel(changes can be find with sukumar@aptina.com)
 1. arch/arm/mach-mx6/board-mx6q_sabrelite.c
 2. arch/arm/mach-mx6/pads-mx6_sabrelite.h
@@ -16,23 +14,16 @@ Files needs to replace/merge with existing freescale kernel(changes can be find 
 4. drivers/media/video/mxc/capture/mxc_v4l2_capture.c
 5. drivers/media/video/mxc/capture/Makefile
 6. include/media/v4l2-chip-ident.h
+7. arch/arm/configs/aptina_mt9d115_mipi_nitrogen6x_defconfig
 
-New files:
-1. drivers/media/video/mxc/capture/mt9d115_mipi.c
-2. drivers/media/video/mxc/capture/mt9d115_mipi.h
+New files needs to copy
+8. drivers/media/video/mxc/capture/mt9d115_mipi.c
+9. drivers/media/video/mxc/capture/mt9d115_mipi.h
 
 Configuration:
 --------------
-make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- menuconfig
-Select --> Device Driver
-           --> Multimedia Support
-               --> Video Capture Adapters
-                   --> MXC Camera/V4L2 PRP Features support
-                       --> <*> CSI camera support 
-                       --> <*> Aptina MT9D115 camera support
-                       --> <*> Pre-processor Encoder library
-                       --> <*> IPU CSI Encoder library
-Save and Exit config file
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- distclean
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- aptina_mt9d115_mipi_nitrogen6x_defconfig
 
 Compile:
 --------
@@ -50,3 +41,6 @@ copy to /SYSTEM/ folder of sd card
 Run: ./v4l2 -m -f 800x600 YUYV -o -c 5
 This will capture 5 preview frame, open in pyuv and verify. 
 
+Test:
+-----
+This driver is tested on BoundaryDevice imx-android r13.4-1(branch) with kernel 3.0.35
