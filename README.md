@@ -1,4 +1,4 @@
-i.mx6
+i.MX 6
 =====
 
 Welcome to Aptina Imaging's Freescale Platform driver site.
