@@ -5,4 +5,6 @@ Welcome to Aptina Imaging's Freescale Platform driver site.
 
 Aptina is committed to providing open source drivers for our imaging sensors.
 
-Please contact drivers@aptina.com for support.
+For more information on Aptina's drivers see https://aptina.atlassian.net/wiki/display/DRV/Drivers+Home
+
+Please create a JIRA at https://aptina.atlassian.net/secure/Dashboard.jspa for support.
