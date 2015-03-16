@@ -1,0 +1,3102 @@
+diff -Naur linux-3.0.35_svn_6/arch/arm/configs/imx6_defconfig linux-3.0.35/arch/arm/configs/imx6_defconfig
+--- linux-3.0.35_svn_6/arch/arm/configs/imx6_defconfig	2013-12-20 10:52:44.714319239 +0530
++++ linux-3.0.35/arch/arm/configs/imx6_defconfig	2013-12-18 17:27:15.000000000 +0530
+@@ -118,7 +118,8 @@
+ # CONFIG_SLAB is not set
+ CONFIG_SLUB=y
+ # CONFIG_SLOB is not set
+-# CONFIG_PROFILING is not set
++CONFIG_PROFILING=y
++# CONFIG_OPROFILE is not set
+ CONFIG_HAVE_OPROFILE=y
+ # CONFIG_KPROBES is not set
+ CONFIG_HAVE_KPROBES=y
+@@ -301,6 +302,7 @@
+ # CONFIG_ARCH_MX503 is not set
+ # CONFIG_ARCH_MX51 is not set
+ CONFIG_ARCH_MX6=y
++# CONFIG_MACH_IMX_BLUETOOTH_RFKILL is not set
+ CONFIG_ARCH_MX6Q=y
+ CONFIG_FORCE_MAX_ZONEORDER=14
+ CONFIG_SOC_IMX6Q=y
+@@ -320,6 +322,7 @@
+ CONFIG_USB_FSL_ARC_OTG=y
+ # CONFIG_MX6_INTER_LDO_BYPASS is not set
+ # CONFIG_MX6_CLK_FOR_BOOTUI_TRANS is not set
++# CONFIG_MX6_ENET_IRQ_TO_GPIO is not set
+ CONFIG_ISP1504_MXC=y
+ # CONFIG_MXC_IRQ_PRIOR is not set
+ CONFIG_MXC_PWM=y
+@@ -331,7 +334,6 @@
+ CONFIG_IRAM_ALLOC=y
+ CONFIG_CLK_DEBUG=y
+ CONFIG_DMA_ZONE_SIZE=184
+-#CONFIG_MX6_ENET_IRQ_TO_GPIO is not set
+ 
+ #
+ # System MMU
+@@ -389,7 +391,7 @@
+ #
+ CONFIG_ARM_AMBA=y
+ # CONFIG_PCI_SYSCALL is not set
+-# CONFIG_ARCH_SUPPORTS_MSI is not set
++CONFIG_ARCH_SUPPORTS_MSI=y
+ # CONFIG_PCCARD is not set
+ CONFIG_ARM_ERRATA_764369=y
+ # CONFIG_PL310_ERRATA_769419 is not set
+@@ -1086,6 +1088,7 @@
+ # CONFIG_TOUCHSCREEN_EETI is not set
+ CONFIG_TOUCHSCREEN_EGALAX=y
+ CONFIG_TOUCHSCREEN_ELAN=y
++# CONFIG_TOUCHSCREEN_EGALAX_SINGLE_TOUCH is not set
+ # CONFIG_TOUCHSCREEN_FUJITSU is not set
+ # CONFIG_TOUCHSCREEN_GUNZE is not set
+ # CONFIG_TOUCHSCREEN_ELO is not set
+@@ -1100,6 +1103,7 @@
+ # CONFIG_TOUCHSCREEN_TOUCHWIN is not set
+ # CONFIG_TOUCHSCREEN_WM97XX is not set
+ # CONFIG_TOUCHSCREEN_USB_COMPOSITE is not set
++# CONFIG_TOUCHSCREEN_NOVATEK is not set
+ # CONFIG_TOUCHSCREEN_TOUCHIT213 is not set
+ # CONFIG_TOUCHSCREEN_TSC2005 is not set
+ # CONFIG_TOUCHSCREEN_TSC2007 is not set
+@@ -1627,7 +1631,7 @@
+ # CONFIG_VIDEO_THS7303 is not set
+ # CONFIG_VIDEO_M52790 is not set
+ # CONFIG_VIDEO_VIVI is not set
+-CONFIG_VIDEO_MXC_CAMERA=m
++CONFIG_VIDEO_MXC_CAMERA=y
+ 
+ #
+ # MXC Camera/V4L2 PRP Features support
+@@ -1636,17 +1640,19 @@
+ # CONFIG_VIDEO_MXC_CSI_CAMERA is not set
+ # CONFIG_MXC_CAMERA_MICRON111 is not set
+ # CONFIG_MXC_CAMERA_OV2640 is not set
+-CONFIG_MXC_CAMERA_OV3640=m
+-CONFIG_MXC_CAMERA_OV5640=m
+-CONFIG_MXC_CAMERA_OV8820_MIPI=m
+-CONFIG_MXC_CAMERA_OV5642=m
+-CONFIG_MXC_TVIN_ADV7180=m
+-CONFIG_MXC_CAMERA_OV5640_MIPI=m
++# CONFIG_MXC_CAMERA_OV3640 is not set
++# CONFIG_MXC_CAMERA_OV5640 is not set
++CONFIG_MXC_CAMERA_MT9M024=m
++# CONFIG_MXC_CAMERA_OV8820_MIPI is not set
++# CONFIG_MXC_CAMERA_OV5642 is not set
++# CONFIG_MXC_TVIN_ADV7180 is not set
++# CONFIG_MXC_CAMERA_OV5640_MIPI is not set
+ # CONFIG_MXC_MIPI_CSI2_TVIN_ADV7280 is not set
+-CONFIG_MXC_CAMERA_SENSOR_CLK=m
+-CONFIG_MXC_IPU_DEVICE_QUEUE_SDC=m
+-CONFIG_MXC_IPU_PRP_ENC=m
+-CONFIG_MXC_IPU_CSI_ENC=m
++CONFIG_MXC_CAMERA_SENSOR_CLK=y
++CONFIG_MXC_IPU_DEVICE_QUEUE_SDC=y
++# CONFIG_MXC_IPU_PRP_VF_SDC is not set
++CONFIG_MXC_IPU_PRP_ENC=y
++CONFIG_MXC_IPU_CSI_ENC=y
+ CONFIG_VIDEO_MXC_OUTPUT=y
+ CONFIG_VIDEO_MXC_IPU_OUTPUT=y
+ # CONFIG_VIDEO_MXC_IPUV1_WVGA_OUTPUT is not set
+@@ -1958,6 +1964,7 @@
+ #
+ # CONFIG_USB_C67X00_HCD is not set
+ CONFIG_USB_EHCI_HCD=y
++# CONFIG_FSL_USB_TEST_MODE is not set
+ CONFIG_USB_EHCI_ARC=y
+ CONFIG_USB_EHCI_ARC_OTG=y
+ # CONFIG_USB_EHCI_ARC_HSIC is not set
+@@ -2564,7 +2571,17 @@
+ CONFIG_HAVE_FTRACE_MCOUNT_RECORD=y
+ CONFIG_HAVE_C_RECORDMCOUNT=y
+ CONFIG_TRACING_SUPPORT=y
+-# CONFIG_FTRACE is not set
++CONFIG_FTRACE=y
++# CONFIG_FUNCTION_TRACER is not set
++# CONFIG_IRQSOFF_TRACER is not set
++# CONFIG_PREEMPT_TRACER is not set
++# CONFIG_SCHED_TRACER is not set
++# CONFIG_ENABLE_DEFAULT_TRACERS is not set
++CONFIG_BRANCH_PROFILE_NONE=y
++# CONFIG_PROFILE_ANNOTATED_BRANCHES is not set
++# CONFIG_PROFILE_ALL_BRANCHES is not set
++# CONFIG_STACK_TRACER is not set
++# CONFIG_BLK_DEV_IO_TRACE is not set
+ # CONFIG_DYNAMIC_DEBUG is not set
+ # CONFIG_DMA_API_DEBUG is not set
+ # CONFIG_ATOMIC64_SELFTEST is not set
+diff -Naur linux-3.0.35_svn_6/arch/arm/mach-mx6/board-mx6q_sabrelite.c linux-3.0.35/arch/arm/mach-mx6/board-mx6q_sabrelite.c
+--- linux-3.0.35_svn_6/arch/arm/mach-mx6/board-mx6q_sabrelite.c	2013-12-20 10:52:44.606319239 +0530
++++ linux-3.0.35/arch/arm/mach-mx6/board-mx6q_sabrelite.c	2013-12-16 20:50:20.000000000 +0530
+@@ -613,7 +613,7 @@
+ 	gpio_direction_output(MX6Q_SABRELITE_CSI0_RST, 1);
+ 
+ 	gpio_set_value(MX6Q_SABRELITE_CSI0_RST, 0);
+-	msleep(1);
++	msleep(100);
+ 	gpio_set_value(MX6Q_SABRELITE_CSI0_RST, 1);
+ 
+ 	/* For MX6Q GPR1 bit19 and bit20 meaning:
+@@ -643,10 +643,16 @@
+ 	{
+ 		I2C_BOARD_INFO("mxc_hdmi_i2c", 0x50),
+ 	},
++#if 0
+ 	{
+ 		I2C_BOARD_INFO("ov564x", 0x3c),
+ 		.platform_data = (void *)&camera_data,
+ 	},
++#endif
++	{
++		I2C_BOARD_INFO("mt9m024", 0x10),
++		.platform_data = (void *)&camera_data,
++	},
+ };
+ 
+ static struct i2c_board_info mxc_i2c2_board_info[] __initdata = {
+diff -Naur linux-3.0.35_svn_6/arch/arm/plat-mxc/include/mach/ipu.h linux-3.0.35/arch/arm/plat-mxc/include/mach/ipu.h
+--- linux-3.0.35_svn_6/arch/arm/plat-mxc/include/mach/ipu.h	2013-12-20 10:52:44.670319239 +0530
++++ linux-3.0.35/arch/arm/plat-mxc/include/mach/ipu.h	2013-12-16 20:50:20.000000000 +0530
+@@ -72,6 +72,7 @@
+ 	IPU_PIX_FMT_YUV420P2,
+ 	IPU_PIX_FMT_YVU422P,
+ 	/* 2 bytes */
++	IPU_PIX_FMT_GENERIC_16,
+ 	IPU_PIX_FMT_RGB565,
+ 	IPU_PIX_FMT_RGB666,
+ 	IPU_PIX_FMT_BGR666,
+diff -Naur linux-3.0.35_svn_6/arch/arm/plat-mxc/include/mach/ipu-v3.h linux-3.0.35/arch/arm/plat-mxc/include/mach/ipu-v3.h
+--- linux-3.0.35_svn_6/arch/arm/plat-mxc/include/mach/ipu-v3.h	2013-12-20 10:52:44.674319239 +0530
++++ linux-3.0.35/arch/arm/plat-mxc/include/mach/ipu-v3.h	2013-12-16 20:50:20.000000000 +0530
+@@ -422,6 +422,7 @@
+ 	IPU_CSI_DATA_WIDTH_4 = 0,
+ 	IPU_CSI_DATA_WIDTH_8 = 1,
+ 	IPU_CSI_DATA_WIDTH_10 = 3,
++	IPU_CSI_DATA_WIDTH_12 = 5,
+ 	IPU_CSI_DATA_WIDTH_16 = 9,
+ };
+ 
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_csi_enc.c linux-3.0.35/drivers/media/video/mxc/capture/ipu_csi_enc.c
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_csi_enc.c	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/ipu_csi_enc.c	2013-12-16 20:50:20.000000000 +0530
+@@ -26,8 +26,9 @@
+ #include "mxc_v4l2_capture.h"
+ #include "ipu_prp_sw.h"
+ 
++#define CAMERA_DBG
+ #ifdef CAMERA_DBG
+-	#define CAMERA_TRACE(x) (printk)x
++	#define CAMERA_TRACE printk
+ #else
+ 	#define CAMERA_TRACE(x)
+ #endif
+@@ -124,6 +125,10 @@
+ 		pixel_fmt = IPU_PIX_FMT_BGR32;
+ 	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_RGB32)
+ 		pixel_fmt = IPU_PIX_FMT_RGB32;
++	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_GREY)
++		pixel_fmt = IPU_PIX_FMT_GENERIC;
++	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_Y16)
++		pixel_fmt = IPU_PIX_FMT_GENERIC_16;
+ 	else {
+ 		printk(KERN_ERR "format not supported\n");
+ 		return -EINVAL;
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_prp_enc.c linux-3.0.35/drivers/media/video/mxc/capture/ipu_prp_enc.c
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_prp_enc.c	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/ipu_prp_enc.c	2013-12-16 20:50:20.000000000 +0530
+@@ -129,6 +129,12 @@
+ 	} else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_RGB32) {
+ 		enc.csi_prp_enc_mem.out_pixel_fmt = IPU_PIX_FMT_RGB32;
+ 		pr_info("RGB32\n");
++	} else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_GREY) {
++		enc.csi_prp_enc_mem.out_pixel_fmt = IPU_PIX_FMT_GENERIC;
++		pr_info("GREY\n");
++	} else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_Y16) {
++		enc.csi_prp_enc_mem.out_pixel_fmt = IPU_PIX_FMT_GENERIC_16;
++		pr_info("Y16\n");
+ 	} else {
+ 		printk(KERN_ERR "format not supported\n");
+ 		return -EINVAL;
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_still.c linux-3.0.35/drivers/media/video/mxc/capture/ipu_still.c
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/ipu_still.c	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/ipu_still.c	2013-12-16 20:50:20.000000000 +0530
+@@ -115,8 +115,12 @@
+ 		pixel_fmt = IPU_PIX_FMT_BGR32;
+ 	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_RGB32)
+ 		pixel_fmt = IPU_PIX_FMT_RGB32;
++	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_GREY)
++		pixel_fmt = IPU_PIX_FMT_GENERIC;
++	else if (cam->v2f.fmt.pix.pixelformat == V4L2_PIX_FMT_Y16)
++		pixel_fmt = IPU_PIX_FMT_GENERIC_16;
+ 	else {
+-		printk(KERN_ERR "format not supported\n");
++		printk(KERN_ERR "%s: format not supported\n",__FUNCTION__);
+ 		return -EINVAL;
+ 	}
+ 
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/Kconfig linux-3.0.35/drivers/media/video/mxc/capture/Kconfig
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/Kconfig	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/Kconfig	2013-12-16 20:50:20.000000000 +0530
+@@ -78,6 +78,12 @@
+ 	---help---
+ 	  If you plan to use the ov5640 Camera with your MXC system, say Y here.
+ 
++config MXC_CAMERA_MT9M024
++        tristate "Aptina MT9M024 camera module support"
++        depends on !VIDEO_MXC_EMMA_CAMERA
++        ---help---
++          If you plan to use the MT9M024 camera module, say Y here.
++
+ config MXC_CAMERA_OV8820_MIPI
+ 	tristate "OmniVision ov8820 camera support using mipi"
+ 	depends on !VIDEO_MXC_EMMA_CAMERA
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/Makefile linux-3.0.35/drivers/media/video/mxc/capture/Makefile
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/Makefile	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/Makefile	2013-12-16 20:50:20.000000000 +0530
+@@ -55,3 +55,6 @@
+ 
+ adv7280_tvin-objs := adv7280_mipi_tvin.o
+ obj-$(CONFIG_MXC_MIPI_CSI2_TVIN_ADV7280) += adv7280_mipi_tvin.o
++
++mt9m024_camera-objs := mt9m024.o
++obj-$(CONFIG_MXC_CAMERA_MT9M024) += mt9m024_camera.o
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024.c linux-3.0.35/drivers/media/video/mxc/capture/mt9m024.c
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024.c	1970-01-01 05:30:00.000000000 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/mt9m024.c	2013-12-19 10:06:36.000000000 +0530
+@@ -0,0 +1,1130 @@
++/*
++ * Copyright 2005-2010 Freescale Semiconductor, Inc. All Rights Reserved.
++ */
++
++/*
++ * The code contained herein is licensed under the GNU General Public
++ * License. You may obtain a copy of the GNU General Public License
++ * Version 2 or later at the following locations:
++ *
++ * http://www.opensource.org/licenses/gpl-license.html
++ * http://www.gnu.org/copyleft/gpl.html
++ */
++
++/*
++ * Copyright 2011-2013 Bluetechnix GmbH. All Rights Reserved.
++ *
++ * Device driver for Bluetechnix ISM-MT9M025 and ISM-AR0132 camera modules
++ * based on Freescale's OV3640 driver
++ *
++ * Author: Harald Krapfenbauer
++ */
++
++
++/*
++ * drivers/media/video/mt9m024.c
++ *
++ * Aptina MT9M024 sensor driver
++ *
++ * Copyright (C) 2013 Aptina Imaging
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *
++ */
++
++
++//#define DEBUG
++
++#include <linux/module.h>
++#include <linux/init.h>
++#include <linux/slab.h>
++#include <linux/ctype.h>
++#include <linux/types.h>
++#include <linux/delay.h>
++#include <linux/device.h>
++#include <linux/i2c.h>
++#include <linux/regulator/consumer.h>
++#include <linux/fsl_devices.h>
++#include <media/v4l2-int-device.h>
++#include "mxc_v4l2_capture.h"
++#include "mt9m024.h"
++#include "mt9m024_pll.h"
++#include "mt9m024_sequencer.h"
++
++#define pr_Dbg pr_err
++
++/* module parameters */
++static int testpattern = 0;
++static int autoexposure = 0;
++static int hdrmode = 0;
++static int sensorwidth = APT_MT9M024_MAX_X_RES;
++static int sensorheight = APT_MT9M024_MAX_Y_RES;
++static int datawidth = 12;
++static int rotate = 0;
++static int binning = 1;
++
++/*!
++ * Maintains the information on the current state of the sensor.
++ */
++struct sensor {
++	struct v4l2_int_device *v4l2_int_device;
++	struct i2c_client *i2c_client;
++	struct v4l2_pix_format pix;
++	struct v4l2_captureparm streamcap;
++	bool on;
++	int framerate;
++	int height;
++	int width;
++
++	/* control settings */
++	int brightness;
++	int hue;
++	int contrast;
++	int saturation;
++	int red;
++	int green;
++	int blue;
++	int ae_mode;
++
++	int csi;
++} mt9m024_data;
++
++const struct fsl_mxc_camera_platform_data *camera_plat;
++
++static int mt9m024_probe(struct i2c_client *adapter,
++				const struct i2c_device_id *device_id);
++static int mt9m024_remove(struct i2c_client *client);
++static s32 mt9m024_read_reg(u16 reg, u16 *val);
++static s32 mt9m024_write_reg(u16 reg, u16 val);
++
++static const struct i2c_device_id mt9m024_id[] = {
++	{"mt9m024", 0},
++	{},
++};
++
++MODULE_DEVICE_TABLE(i2c, mt9m024_id);
++
++static struct i2c_driver mt9m024_i2c_driver = {
++	.driver = {
++		  .owner = THIS_MODULE,
++		  .name  = "mt9m024",
++		  },
++	.probe  = mt9m024_probe,
++	.remove = mt9m024_remove,
++	.id_table = mt9m024_id,
++};
++
++static s32 mt9m024_write_reg(u16 reg, u16 val)
++{
++	u8 au8Buf[4] = {0};
++
++	au8Buf[0] = reg >> 8;
++	au8Buf[1] = reg & 0xff;
++	au8Buf[2] = val >> 8;
++	au8Buf[3] = val & 0xff;
++
++	if (i2c_master_send(mt9m024_data.i2c_client, au8Buf, 4) < 0) {
++		pr_err("%s:write reg error: reg=%04x, val=%04x\n",
++		       __func__, reg, val);
++		return -1;
++	}
++
++	return 0;
++}
++
++static s32 mt9m024_read_reg(u16 reg, u16 *val)
++{
++	u8 regbuf[2] = {0,0};
++	u8 readval[2] = {0,0};
++
++	regbuf[0] = reg >> 8;
++	regbuf[1] = reg & 0xff;
++
++	if (2 != i2c_master_send(mt9m024_data.i2c_client, regbuf, 2)) {
++		pr_err("%s:write reg error: reg=%x\n",
++		       __func__, reg);
++		return -1;
++	}
++
++	if (2 != i2c_master_recv(mt9m024_data.i2c_client, (char*)&readval, 2)) {
++		pr_err("%s:read reg error: reg=%x\n",
++		       __func__, reg);
++		return -1;
++	}
++	*val = (readval[0] << 8) | readval[1];
++
++	return 0;
++}
++
++static int APTsetPLL(unsigned short pa_ucM, unsigned short pa_ucN,
++		     unsigned short pa_ucP1, unsigned short pa_ucP2)
++{
++	unsigned short usDevReg = 0;
++	unsigned short usData = 0;
++
++	// assuming software standby
++
++	// set N = Pre_PLL_Clk_Div
++	usDevReg = APT_MT9M024_PRE_PLL_CLK_DIV;
++	usData = pa_ucN;
++	if (mt9m024_write_reg(usDevReg, usData))
++		return -1;
++	// set P1 = Vt_Sys_Clk_Div
++	usDevReg = APT_MT9M024_VT_SYS_CLK_DIV;
++	usData = pa_ucP1;
++	if (mt9m024_write_reg(usDevReg, usData))
++		return -1;
++	// set P2 = Vt_PIX_Clk_Div
++	usDevReg = APT_MT9M024_VT_PIX_CLK_DIV;
++	usData = pa_ucP2;
++	if (mt9m024_write_reg(usDevReg, usData))
++		return -1;
++	// set M = PLL Multiplier
++	usDevReg = APT_MT9M024_PLL_MULTIPLIER;
++	usData = pa_ucM;
++	if (mt9m024_write_reg(usDevReg, usData))
++		return -1;
++
++	// wait for 1 ms until VCO locked
++	msleep(100);
++	return 0;
++}
++
++static int mt9m024_init_mode(int frame_rate, int width, int height)
++{
++	u16 regaddr = 0;
++	u16 regval = 0;
++	u16 uc_M, uc_N, uc_P1, uc_P2;
++	int tgtPixClk, realPixClk;
++	int offset_left, offset_top;
++	int sensorWidth, sensorHeight;
++
++	if (mt9m024_data.framerate == frame_rate &&
++	    mt9m024_data.width == width &&
++	    mt9m024_data.height == height) {
++		/* values already set, no need to repeat that */
++		return 0;
++	}
++
++	/* streaming off */
++	regaddr = APT_MT9M024_RESET_REGISTER;
++	if (mt9m024_read_reg(regaddr, &regval))
++		return -1;
++	regval &= ~(1<<2);
++	if (mt9m024_write_reg(regaddr, regval))
++		return -1;
++	pr_Dbg("%s: streaming off\n",__func__);
++
++	/* set resolution */
++	if (width <= 640 && height <= 480 && binning) {
++		sensorWidth = width * 2;
++		sensorHeight = height * 2;
++	} else {
++		sensorWidth = width;
++		sensorHeight = height;
++	}
++	offset_left = (APT_MT9M024_MAX_X_RES - sensorWidth) / 2
++		+ APT_MT9M024_X_ADDR_START_DEFAULT;
++	offset_top = (APT_MT9M024_MAX_Y_RES - sensorHeight) / 2
++		+ APT_MT9M024_Y_ADDR_START_DEFAULT;
++	if (mt9m024_write_reg(APT_MT9M024_X_ADDR_START_, offset_left))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_X_ADDR_END_,
++				offset_left + sensorWidth - 1))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_Y_ADDR_START_, offset_top))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_Y_ADDR_END_,
++			      offset_top + sensorHeight - 1))
++		return -1;
++	pr_Dbg("%s: set resolution\n",__func__);
++
++	/* enable digital binning? */
++	if (width <= 640 && height <= 480 && binning) {
++		if (mt9m024_read_reg(APT_MT9M024_DIGITAL_BINNING, &regval))
++			return -1;
++		regval &= ~(0x3 << 0);
++		regval |= (0x2 << 0);
++		if (mt9m024_write_reg(APT_MT9M024_DIGITAL_BINNING, regval))
++			return -1;
++		pr_Dbg("%s: digital binning on\n",__func__);
++	} else {
++		pr_Dbg("%s: digital binning off\n",__func__);
++	}
++
++	/* streaming on */
++	if (mt9m024_read_reg(APT_MT9M024_RESET_REGISTER, &regval))
++		return -1;
++	regval |= (1<<2);
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++	pr_Dbg("%s: streaming on\n",__func__);
++	pr_info("%s: Mode changed %dx%d at %d fps\n", __func__, width, height,
++		frame_rate);
++
++	mt9m024_data.framerate = frame_rate;
++	mt9m024_data.width = width;
++	mt9m024_data.height = height;
++
++	return 0;
++}
++
++int mt9m024_config(void)
++{
++	unsigned short regval;
++	int i;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++	/* Reset HW and SW */
++	if (camera_plat->io_init)
++		camera_plat->io_init();
++	msleep(200);
++	regval = 0x1;
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++	msleep(200);
++	regval = 0x10D8;
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++
++	/* A-1000 Hidy and linear sequencer load August 2 2011 */
++	msleep(200);
++	/* enable sequencer ram */
++	regval = 0x8000;
++	if (mt9m024_write_reg(APT_MT9M024_SEQ_CTRL_PORT, regval))
++		return -1;
++	/* load sequencer ram */
++	for (i=0; i<sizeof(MT9M024sequencerReg)/sizeof(unsigned short); i++) {
++		if (mt9m024_write_reg(APT_MT9M024_SEQ_DATA_PORT, MT9M024sequencerReg[i]))
++			return -1;
++	}
++	/* execute sequence */
++	if (mt9m024_write_reg(0x309e, 0x0186))
++		return -1;
++	msleep(200);
++
++	/* configuration presets */
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, 0x10D8))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_OPERATION_MODE_CTRL, 0x29))
++		return -1;
++	/* A-1000ERS Optimized settings August 2 2011 */
++	if (mt9m024_write_reg(APT_MT9M024_DATA_PEDESTAL_, 0x00C8)) // set datapedestal to 200 to avoid clipping near saturation
++		return -1;
++	if (mt9m024_write_reg(0x3EDA, 0x0F03)) //Set vln_dac to 0x3 as recommended by Sergey
++		return -1;
++	if (mt9m024_write_reg(0x3EDE, 0xC005))
++		return -1;
++	if (mt9m024_write_reg(0x3ED8, 0x09EF)) // Vrst_low = +1
++		return -1;
++	if (mt9m024_write_reg(0x3EE2, 0xA46B))
++		return -1;
++	if (mt9m024_write_reg(0x3EE0, 0x067D)) // enable anti eclipse and adjust setting for high conversion gain (changed to help with high temp noise)
++		return -1;
++	if (mt9m024_write_reg(0x3EDC, 0x0070)) // adjust anti eclipse setting for low conversion gain
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_DARK_CONTROL, 0x0404)) // enable digital row noise correction and cancels TX during column correction
++		return -1;
++	if (mt9m024_write_reg(0x3EE6, 0x8303)) // Helps with column noise at low light
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_DAC_LD_24_25, 0xD208)) // enable analog row noise correction and 1.25x gain
++		return -1;
++	if (mt9m024_write_reg(0x3ED6, 0x00BD))
++		return -1;
++	if (mt9m024_write_reg(0x3EE6, 0x8303)) // improves low light FPN
++		return -1;
++	if (mt9m024_write_reg(0x30E4, 0x6372)) // ADC settings to improve noise performance
++		return -1;
++	if (mt9m024_write_reg(0x30E2, 0x7253))
++		return -1;
++	if (mt9m024_write_reg(0x30E0, 0x5470))
++		return -1;
++	if (mt9m024_write_reg(0x30E6, 0xC4CC))
++		return -1;
++	if (mt9m024_write_reg(0x30E8, 0x8050))
++		return -1;
++
++	/* Column Retriggering at start up */
++	if (mt9m024_write_reg(0x30B0, 0x1300))
++		return -1;
++	if (mt9m024_write_reg(0x30D4, 0xE007))
++		return -1;
++	if (mt9m024_write_reg(0x30BA, 0x0008))
++		return -1;
++	/* streaming on */
++	if (mt9m024_read_reg(APT_MT9M024_RESET_REGISTER, &regval))
++		return -1;
++	regval |= (1<<2);
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++	msleep(200);
++	/* streaming off */
++	if (mt9m024_read_reg(APT_MT9M024_RESET_REGISTER, &regval))
++		return -1;
++	regval &= ~(1<<2);
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++	pr_Dbg("Reset Register #1 = %x\n", regval);
++	if (mt9m024_write_reg(0x3058, 0x003F))
++		return -1;
++	if (mt9m024_write_reg(0x3012, 0x02A0))
++		return -1;
++
++#if 0
++	/* Full Resolution 45FPS Setup */
++	if (mt9m024_write_reg(APT_MT9M024_DIGITAL_BINNING, 0x0))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_Y_ADDR_START_, 0x2))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_X_ADDR_START_, 0x0))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_Y_ADDR_END_, 0x3C1))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_X_ADDR_END_, 0x4FF))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_FRAME_LENGTH_LINES_, 0x3DE))
++		return -1;
++	if (mt9m024_write_reg(APT_MT9M024_LINE_LENGTH_PCK_, 0x672))
++		return -1;
++#endif
++
++	/* Enable Parallel Mode */
++	/* Disable streaming and setup parallel */
++	if (mt9m024_write_reg(0x301A, 0xD018))
++		return -1;
++	/* Set to 12 bits */
++	if (mt9m024_write_reg(0x31D0, 0x1))
++		return -1;
++	if (mt9m024_write_reg(0x30B0, 0x1300))
++		return -1;
++	/* PLL Enabled 27Mhz to 74.25Mhz */
++	if (APTsetPLL(0x2c, 0x2, 0x2, 0x4))
++		return -1;
++	/* streaming on */
++	if (mt9m024_read_reg(APT_MT9M024_RESET_REGISTER, &regval))
++		return -1;
++	regval |= (1<<2);
++	pr_Dbg("Reset Register #2 = %x\n", regval);
++	regval = 0x10DC;
++	if (mt9m024_write_reg(APT_MT9M024_RESET_REGISTER, regval))
++		return -1;
++	pr_Dbg("Reset Register #3 = %x\n", regval);
++
++	/* Misc Setup Auto Exposure */
++	if (mt9m024_write_reg(0x3100, 0x1B))
++		return -1;
++	if (mt9m024_write_reg(0x3112, 0x029F))
++		return -1;
++	if (mt9m024_write_reg(0x3114, 0x008C))
++		return -1;
++	if (mt9m024_write_reg(0x3116, 0x02C0))
++		return -1;
++	if (mt9m024_write_reg(0x3118, 0x005B))
++		return -1;
++	if (mt9m024_write_reg(0x3102, 0x0384))
++		return -1;
++	if (mt9m024_write_reg(0x3104, 0x1000))
++		return -1;
++	if (mt9m024_write_reg(0x3126, 0x0080))
++		return -1;
++	if (mt9m024_write_reg(0x311C, 0x03DD))
++		return -1;
++	if (mt9m024_write_reg(0x311E, 0x0003))
++		return -1;
++	return 0;
++}
++
++/* --------------- IOCTL functions from v4l2_int_ioctl_desc --------------- */
++
++static int ioctl_g_ifparm(struct v4l2_int_device *s, struct v4l2_ifparm *p)
++{
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	if (s == NULL) {
++		pr_err("   ERROR!! no slave device set!\n");
++		return -1;
++	}
++
++	memset(p, 0, sizeof(*p));
++	p->u.bt656.clock_curr = APT_MT9M024_CLOCK;
++	p->if_type = V4L2_IF_TYPE_BT656;
++	if (datawidth == 12)
++		p->u.bt656.mode = V4L2_IF_TYPE_BT656_MODE_NOBT_12BIT;
++	else
++		p->u.bt656.mode = V4L2_IF_TYPE_BT656_MODE_NOBT_8BIT;
++	p->u.bt656.clock_min = us_PllLutMin*1000000;
++	p->u.bt656.clock_max = us_PllLutMax*1000000;
++	p->u.bt656.latch_clk_inv = 0;
++	p->u.bt656.nobt_vs_inv = 0;
++	p->u.bt656.nobt_hs_inv = 0;
++	p->u.bt656.bt_sync_correct = 0;
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return 0;
++}
++
++/*!
++ * ioctl_s_power - V4L2 sensor interface handler for VIDIOC_S_POWER ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @on: indicates power mode (on or off)
++ *
++ * Turns the power on or off, depending on the value of on and returns the
++ * appropriate error code.
++ */
++static int ioctl_s_power(struct v4l2_int_device *s, int on)
++{
++	struct sensor *sensor = s->priv;
++
++	pr_Dbg("%s entry %d\n",__FUNCTION__, on);
++
++#if 0
++	if (on && !sensor->on) {
++		/* Make sure power on */
++		if (camera_plat->pwdn)
++			camera_plat->pwdn(0);
++	} else if (!on && sensor->on) {
++		/* Power down */
++		if (camera_plat->pwdn)
++			camera_plat->pwdn(1);
++
++	}
++#endif
++
++	sensor->on = on;
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return 0;
++}
++
++/*!
++ * ioctl_g_parm - V4L2 sensor interface handler for VIDIOC_G_PARM ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @a: pointer to standard V4L2 VIDIOC_G_PARM ioctl structure
++ *
++ * Returns the sensor's video CAPTURE parameters.
++ */
++static int ioctl_g_parm(struct v4l2_int_device *s, struct v4l2_streamparm *a)
++{
++	struct sensor *sensor = s->priv;
++	struct v4l2_captureparm *cparm = &a->parm.capture;
++	int ret = 0;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	switch (a->type) {
++	/* This is the only case currently handled. */
++	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
++		memset(a, 0, sizeof(*a));
++		a->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
++		cparm->capability = sensor->streamcap.capability;
++		cparm->timeperframe = sensor->streamcap.timeperframe;
++		cparm->capturemode = sensor->streamcap.capturemode;
++		ret = 0;
++		break;
++
++	/* These are all the possible cases. */
++	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
++	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
++	case V4L2_BUF_TYPE_VBI_CAPTURE:
++	case V4L2_BUF_TYPE_VBI_OUTPUT:
++	case V4L2_BUF_TYPE_SLICED_VBI_CAPTURE:
++	case V4L2_BUF_TYPE_SLICED_VBI_OUTPUT:
++		ret = -EINVAL;
++		break;
++
++	default:
++		pr_Dbg("   type is unknown - %d\n", a->type);
++		ret = -EINVAL;
++		break;
++	}
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return ret;
++}
++
++/*!
++ * ioctl_s_parm - V4L2 sensor interface handler for VIDIOC_S_PARM ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @a: pointer to standard V4L2 VIDIOC_S_PARM ioctl structure
++ *
++ * Configures the sensor to use the input parameters, if possible.  If
++ * not possible, reverts to the old parameters and returns the
++ * appropriate error code.
++ */
++static int ioctl_s_parm(struct v4l2_int_device *s, struct v4l2_streamparm *a)
++{
++	struct sensor *sensor = s->priv;
++	struct v4l2_fract *timeperframe = &a->parm.capture.timeperframe;
++	u32 tgt_fps;	/* target frames per secound */
++	int ret = 0;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	/* Make sure power on */
++	if (camera_plat->pwdn)
++		camera_plat->pwdn(0);
++
++	switch (a->type) {
++	/* This is the only case currently handled. */
++	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
++		/* Check that the new frame rate is allowed. */
++		if ((timeperframe->numerator == 0) ||
++		    (timeperframe->denominator == 0)) {
++			timeperframe->denominator = APT_MT9M024_DEFAULT_FPS;
++			timeperframe->numerator = 1;
++		}
++
++		tgt_fps = timeperframe->denominator /
++			  timeperframe->numerator;
++
++		if (tgt_fps > APT_MT9M024_MAX_FPS) {
++			timeperframe->denominator = APT_MT9M024_MAX_FPS;
++			timeperframe->numerator = 1;
++		} else if (tgt_fps < APT_MT9M024_MIN_FPS) {
++			timeperframe->denominator = APT_MT9M024_MIN_FPS;
++			timeperframe->numerator = 1;
++		}
++
++		/* Actual frame rate we use */
++		tgt_fps = timeperframe->denominator /
++			  timeperframe->numerator;
++
++		sensor->streamcap.timeperframe = *timeperframe;
++		sensor->streamcap.capturemode =
++				(u32)a->parm.capture.capturemode;
++
++		ret = mt9m024_init_mode(tgt_fps,
++					sensor->pix.width,
++					sensor->pix.height);
++		break;
++
++	/* These are all the possible cases. */
++	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
++	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
++	case V4L2_BUF_TYPE_VBI_CAPTURE:
++	case V4L2_BUF_TYPE_VBI_OUTPUT:
++	case V4L2_BUF_TYPE_SLICED_VBI_CAPTURE:
++	case V4L2_BUF_TYPE_SLICED_VBI_OUTPUT:
++		pr_Dbg("   type is not " \
++			"V4L2_BUF_TYPE_VIDEO_CAPTURE but %d\n",
++			a->type);
++		ret = -EINVAL;
++		break;
++
++	default:
++		pr_Dbg("   type is unknown - %d\n", a->type);
++		ret = -EINVAL;
++		break;
++	}
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return ret;
++}
++
++/*!
++ * ioctl_g_fmt_cap - V4L2 sensor interface handler for ioctl_g_fmt_cap
++ * @s: pointer to standard V4L2 device structure
++ * @f: pointer to standard V4L2 v4l2_format structure
++ *
++ * Returns the sensor's current pixel format in the v4l2_format
++ * parameter.
++ */
++static int ioctl_g_fmt_cap(struct v4l2_int_device *s, struct v4l2_format *f)
++{
++	struct sensor *sensor = s->priv;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	f->fmt.pix = sensor->pix;
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return 0;
++}
++
++/*!
++ * ioctl_g_ctrl - V4L2 sensor interface handler for VIDIOC_G_CTRL ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @vc: standard V4L2 VIDIOC_G_CTRL ioctl structure
++ *
++ * If the requested control is supported, returns the control's current
++ * value from the video_control[] array.  Otherwise, returns -EINVAL
++ * if the control is not supported.
++ */
++static int ioctl_g_ctrl(struct v4l2_int_device *s, struct v4l2_control *vc)
++{
++	int ret = 0;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	switch (vc->id) {
++	case V4L2_CID_BRIGHTNESS:
++		vc->value = mt9m024_data.brightness;
++		break;
++	case V4L2_CID_HUE:
++		vc->value = mt9m024_data.hue;
++		break;
++	case V4L2_CID_CONTRAST:
++		vc->value = mt9m024_data.contrast;
++		break;
++	case V4L2_CID_SATURATION:
++		vc->value = mt9m024_data.saturation;
++		break;
++	case V4L2_CID_RED_BALANCE:
++		vc->value = mt9m024_data.red;
++		break;
++	case V4L2_CID_BLUE_BALANCE:
++		vc->value = mt9m024_data.blue;
++		break;
++	case V4L2_CID_EXPOSURE:
++		vc->value = mt9m024_data.ae_mode;
++		break;
++	default:
++		ret = -EINVAL;
++	}
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return ret;
++}
++
++/*!
++ * ioctl_s_ctrl - V4L2 sensor interface handler for VIDIOC_S_CTRL ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @vc: standard V4L2 VIDIOC_S_CTRL ioctl structure
++ *
++ * If the requested control is supported, sets the control's current
++ * value in HW (and updates the video_control[] array).  Otherwise,
++ * returns -EINVAL if the control is not supported.
++ */
++static int ioctl_s_ctrl(struct v4l2_int_device *s, struct v4l2_control *vc)
++{
++	int retval = 0;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	switch (vc->id) {
++	case V4L2_CID_BRIGHTNESS:
++		break;
++	case V4L2_CID_CONTRAST:
++		break;
++	case V4L2_CID_SATURATION:
++		break;
++	case V4L2_CID_HUE:
++		break;
++	case V4L2_CID_AUTO_WHITE_BALANCE:
++		break;
++	case V4L2_CID_DO_WHITE_BALANCE:
++		break;
++	case V4L2_CID_RED_BALANCE:
++		break;
++	case V4L2_CID_BLUE_BALANCE:
++		break;
++	case V4L2_CID_GAMMA:
++		break;
++	case V4L2_CID_EXPOSURE:
++		break;
++	case V4L2_CID_AUTOGAIN:
++		break;
++	case V4L2_CID_GAIN:
++		break;
++	case V4L2_CID_HFLIP:
++		break;
++	case V4L2_CID_VFLIP:
++		break;
++	default:
++		retval = -EPERM;
++		break;
++	}
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return retval;
++}
++
++/*!
++ * ioctl_enum_framesizes - V4L2 sensor interface handler for
++ *			   VIDIOC_ENUM_FRAMESIZES ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @fsize: standard V4L2 VIDIOC_ENUM_FRAMESIZES ioctl structure
++ *
++ * Return 0 if successful, otherwise -EINVAL.
++ */
++static int ioctl_enum_framesizes(struct v4l2_int_device *s,
++				 struct v4l2_frmsizeenum *fsize)
++{
++	if (fsize->index > 0)
++		return -EINVAL;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++	fsize->pixel_format = mt9m024_data.pix.pixelformat;
++	fsize->discrete.width = sensorwidth;
++	fsize->discrete.height = sensorheight;
++	pr_Dbg("%s exit\n",__FUNCTION__);
++	return 0;
++}
++
++/*!
++ * ioctl_g_chip_ident - V4L2 sensor interface handler for
++ *			VIDIOC_DBG_G_CHIP_IDENT ioctl
++ * @s: pointer to standard V4L2 device structure
++ * @id: pointer to int
++ *
++ * Return 0.
++ */
++static int ioctl_g_chip_ident(struct v4l2_int_device *s, int *id)
++{
++	((struct v4l2_dbg_chip_ident *)id)->match.type =
++		V4L2_CHIP_MATCH_I2C_DRIVER;
++	strcpy(((struct v4l2_dbg_chip_ident *)id)->match.name,
++		"ism-mt9m024_camera");
++
++	return 0;
++}
++
++/*!
++ * ioctl_init - V4L2 sensor interface handler for VIDIOC_INT_INIT
++ * @s: pointer to standard V4L2 device structure
++ */
++static int ioctl_init(struct v4l2_int_device *s)
++{
++	return 0;
++}
++
++/*!
++ * ioctl_enum_fmt_cap - V4L2 sensor interface handler for VIDIOC_ENUM_FMT
++ * @s: pointer to standard V4L2 device structure
++ * @fmt: pointer to standard V4L2 fmt description structure
++ *
++ * Return 0.
++ */
++static int ioctl_enum_fmt_cap(struct v4l2_int_device *s,
++			      struct v4l2_fmtdesc *fmt)
++{
++	if (fmt->index > 0)
++		return -EINVAL;
++
++	fmt->pixelformat = mt9m024_data.pix.pixelformat;
++
++	return 0;
++}
++
++/*!
++ * ioctl_dev_init - V4L2 sensor interface handler for vidioc_int_dev_init_num
++ * @s: pointer to standard V4L2 device structure
++ *
++ * Initialise the device when slave attaches to the master.
++ */
++static int ioctl_dev_init(struct v4l2_int_device *s)
++{
++	struct sensor *sensor = s->priv;
++	u32 tgt_fps;	/* target frames per second */
++	int retval;
++
++	pr_Dbg("%s entry\n",__FUNCTION__);
++
++	mt9m024_data.on = true;
++	mt9m024_data.framerate = -1;
++	mt9m024_data.width = -1;
++	mt9m024_data.height = -1;
++
++	/* Default camera frame rate is set in probe */
++	tgt_fps = sensor->streamcap.timeperframe.denominator /
++		  sensor->streamcap.timeperframe.numerator;
++
++	retval = mt9m024_init_mode(tgt_fps,
++				   sensor->pix.width,
++				   sensor->pix.height);
++
++	pr_Dbg("%s exit\n",__FUNCTION__);
++
++	return retval;
++}
++
++/*!
++ * ioctl_dev_exit - V4L2 sensor interface handler for vidioc_int_dev_exit_num
++ * @s: pointer to standard V4L2 device structure
++ *
++ * Delinitialise the device when slave detaches to the master.
++ */
++static int ioctl_dev_exit(struct v4l2_int_device *s)
++{
++	return 0;
++}
++
++/*!
++ * This structure defines all the ioctls for this module and links them to the
++ * enumeration.
++ */
++static struct v4l2_int_ioctl_desc mt9m024_ioctl_desc[] = {
++	{vidioc_int_dev_init_num, (v4l2_int_ioctl_func *)ioctl_dev_init},
++	{vidioc_int_dev_exit_num, ioctl_dev_exit},
++	{vidioc_int_s_power_num, (v4l2_int_ioctl_func *)ioctl_s_power},
++	{vidioc_int_g_ifparm_num, (v4l2_int_ioctl_func *)ioctl_g_ifparm},
++/*	{vidioc_int_g_needs_reset_num,
++				(v4l2_int_ioctl_func *)ioctl_g_needs_reset}, */
++/*	{vidioc_int_reset_num, (v4l2_int_ioctl_func *)ioctl_reset}, */
++	{vidioc_int_init_num, (v4l2_int_ioctl_func *)ioctl_init},
++	{vidioc_int_enum_fmt_cap_num,
++				(v4l2_int_ioctl_func *)ioctl_enum_fmt_cap},
++/*	{vidioc_int_try_fmt_cap_num,
++				(v4l2_int_ioctl_func *)ioctl_try_fmt_cap}, */
++	{vidioc_int_g_fmt_cap_num, (v4l2_int_ioctl_func *)ioctl_g_fmt_cap},
++/*	{vidioc_int_s_fmt_cap_num, (v4l2_int_ioctl_func *)ioctl_s_fmt_cap}, */
++	{vidioc_int_g_parm_num, (v4l2_int_ioctl_func *)ioctl_g_parm},
++	{vidioc_int_s_parm_num, (v4l2_int_ioctl_func *)ioctl_s_parm},
++/*	{vidioc_int_queryctrl_num, (v4l2_int_ioctl_func *)ioctl_queryctrl}, */
++	{vidioc_int_g_ctrl_num, (v4l2_int_ioctl_func *)ioctl_g_ctrl},
++	{vidioc_int_s_ctrl_num, (v4l2_int_ioctl_func *)ioctl_s_ctrl},
++	{vidioc_int_enum_framesizes_num,
++				(v4l2_int_ioctl_func *)ioctl_enum_framesizes},
++	{vidioc_int_g_chip_ident_num,
++				(v4l2_int_ioctl_func *)ioctl_g_chip_ident},
++};
++
++static struct v4l2_int_slave mt9m024_slave = {
++	.ioctls = mt9m024_ioctl_desc,
++	.num_ioctls = ARRAY_SIZE(mt9m024_ioctl_desc),
++};
++
++static struct v4l2_int_device mt9m024_int_device = {
++	.module = THIS_MODULE,
++	.name = "mt9m024",
++	.type = v4l2_int_type_slave,
++	.u = {
++		.slave = &mt9m024_slave,
++	},
++};
++
++/*!
++ * mt9m024 I2C probe function
++ *
++ * @param adapter            struct i2c_adapter *
++ * @return  Error code indicating success or failure
++ */
++static int mt9m024_probe(struct i2c_client *client,
++			const struct i2c_device_id *id)
++{
++	int retval;
++	struct fsl_mxc_camera_platform_data *plat_data = client->dev.platform_data;
++	u16 regaddr;
++	u16 regval;
++
++	/* Set initial values for the sensor struct. */
++	memset(&mt9m024_data, 0, sizeof(mt9m024_data));
++	mt9m024_data.csi = plat_data->csi;
++
++	mt9m024_data.i2c_client = client;
++	if (datawidth == 12)
++		/* because of the CSI's color extension to 16 bits */
++		mt9m024_data.pix.pixelformat = IPU_PIX_FMT_GENERIC_16;
++	else
++		mt9m024_data.pix.pixelformat = IPU_PIX_FMT_GENERIC;
++
++	mt9m024_data.pix.width = sensorwidth;
++	mt9m024_data.pix.height = sensorheight;
++	mt9m024_data.streamcap.capability = V4L2_CAP_TIMEPERFRAME;
++	mt9m024_data.streamcap.capturemode = 0;
++	mt9m024_data.streamcap.timeperframe.denominator =
++		APT_MT9M024_DEFAULT_FPS;
++	mt9m024_data.streamcap.timeperframe.numerator = 1;
++
++
++#if 0
++	if (plat_data->pwdn)
++		plat_data->pwdn(0);
++#endif
++	camera_plat = plat_data;
++
++	/* read model id */
++	regaddr = APT_MT9M024_MODEL_ID_;
++	if (mt9m024_read_reg(regaddr, &regval))
++		return -1;
++	if (regval != 0x2400) {
++		pr_err("%s: Camera not found\n", __func__);
++		return -1;
++	} else {
++		pr_Dbg("%s: Camera found!\n", __func__);
++	}
++
++#if 0
++	/* sw reset */
++	regaddr = APT_MT9M024_RESET_REGISTER;
++	if (mt9m024_read_reg(regaddr, &regval))
++		return -1;
++	// Bit 0 is used to reset the digital logic of the sensor
++	regval |= 0x1;
++#endif
++#if 1
++	/* sequencer ram and configuration presets */
++	if (mt9m024_config()) {
++		pr_err("%s: Loading sequencer failed\n",__func__);
++		return -1;
++	}
++#endif
++
++#if 1
++	/* disable hispi i/f */
++	regaddr = APT_MT9M024_RESET_REGISTER;
++	if (mt9m024_read_reg(regaddr, &regval))
++		return -1;
++	regval |= (1<<12);
++	if (mt9m024_write_reg(regaddr, regval))
++		return -1;
++
++	/* enable parallel i/f */
++	regaddr = APT_MT9M024_RESET_REGISTER;
++	if (mt9m024_read_reg(regaddr, &regval))
++		return -1;
++	regval |= ((1<<7)|(1<<6));
++	if (mt9m024_write_reg(regaddr, regval))
++		return -1;
++#endif
++
++	/* enable test pattern? */
++	regaddr = APT_MT9M024_TEST_PATTERN_MODE_;
++	switch (testpattern) {
++	case 1:
++	case 2:
++	case 3:
++		regval = testpattern;
++		pr_info("%s: Enabling test pattern %d\n",__func__,testpattern);
++		break;
++	case 4:
++		regval = 256;
++		pr_info("%s: Enabling test pattern %d\n",__func__,testpattern);
++		break;
++	default:
++		regval = 0;
++		break;
++	}
++	if (mt9m024_write_reg(regaddr, regval))
++		return -1;
++
++#if 0
++	/* auto exposure and HDR mode */
++	if (autoexposure) {
++		pr_info("%s: Enabling auto exposure\n",__func__);
++		if (mt9m024_write_reg(APT_MT9M024_AE_CTRL_REG, 0x1b))
++			return -1;
++		if (hdrmode) {
++			pr_info("%s: Enabling HDR mode\n",__func__);
++			if (mt9m024_write_reg(APT_MT9M024_OPERATION_MODE_CTRL,
++						0x28))
++				return -1;
++		}
++	} else {
++		regaddr = APT_MT9M024_AE_CTRL_REG;
++		pr_info("%s: Auto exposure disabled\n",__func__);
++		regval = 0x1a;
++		if (mt9m024_write_reg(regaddr, regval))
++			return -1;
++	}
++#endif
++
++	/* Rotate */
++	if (rotate) {
++		pr_info("%s: Enabling 180° rotation\n",__func__);
++		regaddr = APT_MT9M024_READ_MODE;
++		if (mt9m024_read_reg(regaddr, &regval))
++			return -1;
++		regval |= (1<<15 | 1<<14);
++		if (mt9m024_write_reg(regaddr, regval))
++			return -1;
++	}
++
++	mt9m024_int_device.priv = &mt9m024_data;
++	retval = v4l2_int_device_register(&mt9m024_int_device);
++
++	if (!retval)
++		pr_info("%s: Successfully probed\n",__func__);
++	else
++		pr_info("%s: Error\n",__func__);
++
++
++	return retval;
++}
++
++/*!
++ * mt9m024 I2C detach function
++ *
++ * @param client            struct i2c_client *
++ * @return  Error code indicating success or failure
++ */
++static int mt9m024_remove(struct i2c_client *client)
++{
++	v4l2_int_device_unregister(&mt9m024_int_device);
++	return 0;
++}
++
++/*!
++ * mt9m024 init function
++ * Called by insmod mt9m024_camera.ko.
++ *
++ * @return  Error code indicating success or failure
++ */
++static __init int mt9m024_init(void)
++{
++	u8 err;
++
++	pr_Dbg("%s:driver registration\n", __func__);
++	err = i2c_add_driver(&mt9m024_i2c_driver);
++	if (err != 0)
++		pr_err("%s:driver registration failed, error=%d \n",
++			__func__, err);
++
++	return err;
++}
++
++/*!
++ * MT9M024 cleanup function
++ * Called on rmmod mt9m024_camera.ko
++ *
++ * @return  Error code indicating success or failure
++ */
++static void __exit mt9m024_clean(void)
++{
++	i2c_del_driver(&mt9m024_i2c_driver);
++}
++
++module_init(mt9m024_init);
++module_exit(mt9m024_clean);
++
++MODULE_AUTHOR("Harald Krapfenbauer, Bluetechnix");
++MODULE_DESCRIPTION("ISM-MT9M024 Camera Module Driver");
++MODULE_LICENSE("GPL");
++MODULE_VERSION("1.0");
++MODULE_ALIAS("CSI");
++
++module_param(testpattern, int, 0);
++module_param(autoexposure, int, 0);
++module_param(hdrmode, int, 0);
++module_param(sensorwidth, int, 0);
++module_param(sensorheight, int, 0);
++module_param(datawidth, int, 0);
++module_param(rotate, int, 0);
++module_param(binning, int, 0);
++
++MODULE_PARM_DESC(testpattern, "Test pattern: 0=disable (default), 1=solid color, 2=color bar, 3=fade-to-gray color bar, 4=walking 1s");
++MODULE_PARM_DESC(autoexposure, "Auto exposure: 0=disable, 1=enable (default)");
++MODULE_PARM_DESC(hdrmode, "High dynamic range mode: 0=disable (default), 1=enable");
++MODULE_PARM_DESC(sensorwidth, "Sensor width, default 1280");
++MODULE_PARM_DESC(sensorheight, "Sensor height, default 960");
++MODULE_PARM_DESC(datawidth, "Data width: 8 (default), 12 bits");
++MODULE_PARM_DESC(rotate, "Rotate by 180°, 0=no (default), 1=yes");
++MODULE_PARM_DESC(binning, "Enable digital binning for resolutions of VGA or smaller, 0=no, 1=yes (default)");
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024.h linux-3.0.35/drivers/media/video/mxc/capture/mt9m024.h
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024.h	1970-01-01 05:30:00.000000000 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/mt9m024.h	2013-12-19 10:25:16.000000000 +0530
+@@ -0,0 +1,207 @@
++/*
++ * Copyright 2011-2013 Bluetechnix GmbH. All Rights Reserved.
++ *
++ * The code contained herein is licensed under the GNU General Public
++ * License. You may obtain a copy of the GNU General Public License
++ * Version 2 or later at the following locations:
++ *
++ * http://www.opensource.org/licenses/gpl-license.html
++ * http://www.gnu.org/copyleft/gpl.html
++ *
++ * Defines for Bluetechnix ISM-MT9M024 camera module
++ * Author: Harald Krapfenbauer
++ */
++
++#ifndef __ISM_MT9M024_H__
++#define __ISM_MT9M024_H__
++
++// default
++#define APT_MT9M024_DEFAULT_FPS                 45
++#define APT_MT9M024_DEFAULT_PIXEL		0x672
++#define APT_MT9M024_DEFAULT_LINES		0x3de
++#define APT_MT9M024_CLOCK			50000000
++#define APT_MT9M024_DEFAULT_LUMA_TARGET         0x666
++#define APT_MT9M024_MAX_FPS                     (us_PllLutMax*1000000/(APT_MT9M024_DEFAULT_PIXEL*APT_MT9M024_DEFAULT_LINES))
++#define APT_MT9M024_MIN_FPS                     (us_PllLutMin*1000000/(APT_MT9M024_DEFAULT_PIXEL*APT_MT9M024_DEFAULT_LINES))
++
++
++// max resolution
++#define APT_MT9M024_MAX_X_RES                   1280
++#define APT_MT9M024_MAX_Y_RES                   960
++
++// default values for windowing
++#define APT_MT9M024_Y_ADDR_START_DEFAULT        0x2
++#define APT_MT9M024_X_ADDR_START_DEFAULT        0x0
++#define APT_MT9M024_Y_ADDR_END_DEFAULT          0x3C1
++#define APT_MT9M024_X_ADDR_END_DEFAULT          0x4FF
++
++// register definitions
++#define APT_MT9M024_MODEL_ID_                   0x3000
++#define APT_MT9M024_Y_ADDR_START_               0x3002
++#define APT_MT9M024_X_ADDR_START_               0x3004
++#define APT_MT9M024_Y_ADDR_END_                 0x3006
++#define APT_MT9M024_X_ADDR_END_                 0x3008
++#define APT_MT9M024_FRAME_LENGTH_LINES_         0x300a
++#define APT_MT9M024_LINE_LENGTH_PCK_            0x300c
++#define APT_MT9M024_REVISION_NUMBER             0x300e
++#define APT_MT9M024_LOCK_CONTROL                0x3010
++#define APT_MT9M024_COARSE_INTEGRATION_TIME_    0x3012
++#define APT_MT9M024_FINE_INTEGRATION_TIME_      0x3014
++#define APT_MT9M024_COARSE_INTEGRATION_TIME_CB  0x3016
++#define APT_MT9M024_FINE_INTEGRATION_TIME_CB    0x3018
++#define APT_MT9M024_RESET_REGISTER              0x301A
++#define APT_MT9M024_DATA_PEDESTAL_              0x301E
++#define APT_MT9M024_GPI_STATUS                  0x3026
++#define APT_MT9M024_ROW_SPEED                   0x3028
++#define APT_MT9M024_VT_PIX_CLK_DIV              0x302A
++#define APT_MT9M024_VT_SYS_CLK_DIV              0x302C
++#define APT_MT9M024_PRE_PLL_CLK_DIV             0x302E
++#define APT_MT9M024_PLL_MULTIPLIER              0x3030
++#define APT_MT9M024_DIGITAL_BINNING             0x3032
++#define APT_MT9M024_FRAME_COUNT_                0x303A
++#define APT_MT9M024_FRAME_STATUS                0x303C
++#define APT_MT9M024_READ_MODE                   0x3040
++#define APT_MT9M024_DARK_CONTROL                0x3044
++#define APT_MT9M024_FLASH                       0x3046
++#define APT_MT9M024_GREEN1_GAIN                 0x3056
++#define APT_MT9M024_BLUE_GAIN                   0x3058
++#define APT_MT9M024_RED_GAIN                    0x305A
++#define APT_MT9M024_GREEN2_GAIN                 0x305C
++#define APT_MT9M024_GLOBAL_GAIN                 0x305E
++#define APT_MT9M024_EMBEDDED_DATA_CTRL          0x3064
++#define APT_MT9M024_DATAPATH_SELECT             0x306E
++#define APT_MT9M024_TEST_PATTERN_MODE_          0x3070
++#define APT_MT9M024_TEST_DATA_RED_              0x3072
++#define APT_MT9M024_TEST_DATA_GREENR_           0x3074
++#define APT_MT9M024_TEST_DATA_BLUE_             0x3076
++#define APT_MT9M024_TEST_DATA_GREENB_           0x3078
++#define APT_MT9M024_TEST_RAW_MODE               0x307A
++#define APT_MT9M024_EXPOSURE_T2                 0x307C
++#define APT_MT9M024_EXPOSURE_T3                 0x3080
++#define APT_MT9M024_OPERATION_MODE_CTRL         0x3082
++#define APT_MT9M024_OPERATION_MODE_CTRL_CB      0x3084
++#define APT_MT9M024_SEQ_DATA_PORT               0x3086
++#define APT_MT9M024_SEQ_CTRL_PORT               0x3088
++#define APT_MT9M024_X_ADDR_START_CB             0x308A
++#define APT_MT9M024_Y_ADDR_START_CB             0x308C
++#define APT_MT9M024_X_ADDR_END_CB               0x308E
++#define APT_MT9M024_Y_ADDR_END_CB               0x3090
++#define APT_MT9M024_X_EVEN_INC_                 0x30A0
++#define APT_MT9M024_X_ODD_INC_                  0x30A2
++#define APT_MT9M024_Y_EVEN_INC_                 0x30A4
++#define APT_MT9M024_Y_ODD_INC_                  0x30A6
++#define APT_MT9M024_Y_ODD_INC_CB                0x30A8
++#define APT_MT9M024_FRAME_LENGTH_LINES_CB       0x30AA
++#define APT_MT9M024_EXPOSURE_T1                 0x30AC
++#define APT_MT9M024_DIGITAL_TEST                0x30B0
++#define APT_MT9M024_TEMPSENS_DATA               0x30B2
++#define APT_MT9M024_TEMPSENS_CTRL               0x30B4
++#define APT_MT9M024_DIGITAL_CTRL                0x30BA
++#define APT_MT9M024_GREEN1_GAIN_CB              0x30BC
++#define APT_MT9M024_BLUE_GAIN_CB                0x30BE
++#define APT_MT9M024_RED_GAIN_CB                 0x30C0
++#define APT_MT9M024_GREEN2_GAIN_CB              0x30C2
++#define APT_MT9M024_GLOBAL_GAIN_CB              0x30C4
++#define APT_MT9M024_TEMPSENS_CALIB1             0x30C6
++#define APT_MT9M024_TEMPSENS_CALIB2             0x30C8
++#define APT_MT9M024_TEMPSENS_CALIB3             0x30CA
++#define APT_MT9M024_TEMPSENS_CALIB4             0x30CC
++#define APT_MT9M024_COLUMN_CORRECTION           0x30D4
++#define APT_MT9M024_GAIN_OFFSET_CTRL            0x30EA
++#define APT_MT9M024_AE_CTRL_REG                 0x3100
++#define APT_MT9M024_AE_LUMA_TARGET_REG          0x3102
++#define APT_MT9M024_AE_HIST_TARGET_REG          0x3104
++#define APT_MT9M024_AE_HYSTERESIS_REG           0x3106
++#define APT_MT9M024_AE_MIN_EV_STEP_REG          0x3108
++#define APT_MT9M024_AE_MAX_EV_STEP_REG          0x310A
++#define APT_MT9M024_AE_DAMP_OFFSET_REG          0x310C
++#define APT_MT9M024_AE_DAMP_GAIN_REG            0x310E
++#define APT_MT9M024_AE_DAMP_MAX_REG             0x3110
++#define APT_MT9M024_AE_DCG_EXPOSURE_HIGH_REG    0x3112
++#define APT_MT9M024_AE_DCG_EXPOSURE_LOW_REG     0x3114
++#define APT_MT9M024_AE_DCG_GAIN_FACTOR_REG      0x3116
++#define APT_MT9M024_AE_DCG_GAIN_FACTOR_INV_REG  0x3118
++#define APT_MT9M024_AE_MAX_EXPOSURE_REG         0x311C
++#define APT_MT9M024_AE_MIN_EXPOSURE_REG         0x311E
++#define APT_MT9M024_AE_LOW_MEAN_TARGET_REG      0x3120
++#define APT_MT9M024_AE_HIST_LOW_THRESH_REG      0x3122
++#define APT_MT9M024_AE_DARK_CUR_THRESH_REG      0x3124
++#define APT_MT9M024_AE_ALPHA_V1_REG             0x3126
++#define APT_MT9M024_AE_ALPHA_COEF_REG           0x3128
++#define APT_MT9M024_AE_CURRENT_GAINS            0x312A
++#define APT_MT9M024_AE_ROI_X_START_OFFSET       0x3140
++#define APT_MT9M024_AE_ROI_Y_START_OFFSET       0x3142
++#define APT_MT9M024_AE_ROI_X_SIZE               0x3144
++#define APT_MT9M024_AE_ROI_Y_SIZE               0x3146
++#define APT_MT9M024_AE_HIST_BEGIN_PERC          0x3148
++#define APT_MT9M024_AE_HIST_END_PERC            0x314A
++#define APT_MT9M024_AE_HIST_DIV                 0x314C
++#define APT_MT9M024_AE_NORM_WIDTH_MIN           0x314E
++#define APT_MT9M024_AE_MEAN_H                   0x3150
++#define APT_MT9M024_AE_MEAN_L                   0x3152
++#define APT_MT9M024_AE_HIST_BEGIN_H             0x3154
++#define APT_MT9M024_AE_HIST_BEGIN_L             0x3156
++#define APT_MT9M024_AE_HIST_END_H               0x3158
++#define APT_MT9M024_AE_HIST_END_L               0x315A
++#define APT_MT9M024_AE_HIST_END_MEAN_H          0x315C
++#define APT_MT9M024_AE_HIST_END_MEAN_L          0x315E
++#define APT_MT9M024_AE_PERC_LOW_END             0x3160
++#define APT_MT9M024_AE_NORM_ABS_DEV             0x3162
++#define APT_MT9M024_AE_COARSE_INTEGRATION_TIME  0x3164
++#define APT_MT9M024_AE_AG_EXPOSURE_HI           0x3166
++#define APT_MT9M024_AE_AG_EXPOSURE_LO           0x3168
++#define APT_MT9M024_AE_AG_GAIN1                 0x316A
++#define APT_MT9M024_AE_AG_GAIN2                 0x316C
++#define APT_MT9M024_AE_AG_GAIN3                 0x316E
++#define APT_MT9M024_AE_INV_AG_GAIN1             0x3170
++#define APT_MT9M024_AE_INV_AG_GAIN2             0x3172
++#define APT_MT9M024_AE_INV_AG_GAIN3             0x3174
++#define APT_MT9M024_DELTA_DK_CONTROL            0x3180
++#define APT_MT9M024_DELTA_DK_CLIP               0x3182
++#define APT_MT9M024_DELTA_DK_T1                 0x3184
++#define APT_MT9M024_DELTA_DK_T2                 0x3186
++#define APT_MT9M024_DELTA_TK_T3                 0x3188
++#define APT_MT9M024_HDR_MC_CTRL1                0x318A
++#define APT_MT9M024_HDR_MC_CTRL2                0x318C
++#define APT_MT9M024_HDR_MC_CTRL3                0x318E
++#define APT_MT9M024_HDR_MC_CTRL4                0x3190
++#define APT_MT9M024_HDR_MC_CTRL5                0x3192
++#define APT_MT9M024_HDR_MC_CTRL6                0x3194
++#define APT_MT9M024_HDR_MC_CTRL7                0x3196
++#define APT_MT9M024_HDR_MC_CTRL8                0x3198
++#define APT_MT9M024_HDR_COMP_KNEE1              0x319A
++#define APT_MT9M024_HDR_COMP_KNEE2              0x319C
++#define APT_MT9M024_HDR_MC_CTRL9                0x319E
++#define APT_MT9M024_HDR_MC_CTRL10               0x31A0
++#define APT_MT9M024_HDR_MC_CTRL11               0x31A2
++#define APT_MT9M024_HISPI_TIMING                0x31C0
++#define APT_MT9M024_HISPI_CONTROL_STATUS        0x31C6
++#define APT_MT9M024_HISPI_CRC_0                 0x31C8
++#define APT_MT9M024_HISPI_CRC_1                 0x31CA
++#define APT_MT9M024_HISPI_CRC_2                 0x31CC
++#define APT_MT9M024_HISPI_CRC_3                 0x31CE
++#define APT_MT9M024_HDR_COMP                    0x31D0
++#define APT_MT9M024_STAT_FRAME_ID               0x31D2
++#define APT_MT9M024_I2C_WRT_CHECKSUM            0x31D6
++#define APT_MT9M024_PIX_DEF_ID                  0x31E0
++#define APT_MT9M024_PIX_DEF_ID_BASE_RAM         0x31E2
++#define APT_MT9M024_PIX_DEF_ID_STREAM_RAM       0x31E4
++#define APT_MT9M024_PIX_DEF_RAM_RD_ADDR         0x31E6
++#define APT_MT9M024_HORIZONAL_CURSOR_POSITION_  0x31E8
++#define APT_MT9M024_VERTICAL_CURSOR_POSITION_   0x31EA
++#define APT_MT9M024_HORIZONTAL_CURSOR_WIDTH_    0x31EC
++#define APT_MT9M024_VERTICAL_CURSOR_WIDTH_      0x31EE
++#define APT_MT9M024_FUSE_ID1                    0x31F4
++#define APT_MT9M024_FUSE_ID2                    0x31F6
++#define APT_MT9M024_FUSE_ID3                    0x31F8
++#define APT_MT9M024_FUSE_ID4                    0x31FA
++#define APT_MT9M024_I2C_IDS                     0x31FC
++#define APT_MT9M024_DAC_LD_24_25                0x3EE4
++#define APT_MT9M024_BIST_BUFFERS_CONTROL1       0x3FD0
++#define APT_MT9M024_BIST_BUFFERS_CONTROL2       0x3FD2
++#define APT_MT9M024_BIST_BUFFERS_STATUS1        0x3FD4
++#define APT_MT9M024_BIST_BUFFERS_STATUS2        0x3FD6
++#define APT_MT9M024_BIST_BUFFERS_DATA1          0x3FD8
++#define APT_MT9M024_BIST_BUFFERS_DATA2          0x3FDA
++
++#endif
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024_pll.h linux-3.0.35/drivers/media/video/mxc/capture/mt9m024_pll.h
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024_pll.h	1970-01-01 05:30:00.000000000 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/mt9m024_pll.h	2013-12-19 11:08:50.000000000 +0530
+@@ -0,0 +1,235 @@
++/*
++ * Copyright 2011-2013 Bluetechnix GmbH. All Rights Reserved.
++ *
++ * The code contained herein is licensed under the GNU General Public
++ * License. You may obtain a copy of the GNU General Public License
++ * Version 2 or later at the following locations:
++ *
++ * http://www.opensource.org/licenses/gpl-license.html
++ * http://www.gnu.org/copyleft/gpl.html
++ *
++ * PLL settings for Bluetechnix ISM-MT9M025 and ISM-AR0132 camera modules
++ * Author: Harald Krapfenbauer
++ */
++
++
++#ifndef _MT9M024_PLL_H_INCLUDED_
++#define _MT9M024_PLL_H_INCLUDED_
++
++struct MT9M024_PLL_ENTRY {
++    unsigned short m;
++    unsigned char n;
++    unsigned char p1;
++    unsigned char p2;
++};
++
++// table for EXTCLK = 50MHz
++// index = MHz
++static struct MT9M024_PLL_ENTRY a_PllLUT[] = {
++    {},
++    {},
++    {243, 31, 14, 14},
++    {163, 19, 11, 13},
++    {243, 31, 7, 14},
++    {254, 21, 11, 11},
++    {215, 14, 8, 16},
++    {243, 31, 4, 14},
++    {243, 31, 7, 7},
++    {97, 7, 7, 11},
++    {255, 29, 4, 11},
++    {163, 19, 3, 13},
++    {215, 14, 4, 16},
++    {163, 19, 3, 11},
++    {243, 31, 2, 14},
++    {251, 31, 3, 9},
++    {215, 14, 3, 16},
++    {155, 19, 2, 12},
++    {131, 13, 2, 14},
++    {163, 11, 3, 13},
++    {255, 29, 2, 11},
++    {215, 16, 2, 16},
++    {194, 21, 3, 7},
++    {172, 17, 2, 11},
++    {215, 14, 2, 16},
++    {241, 23, 3, 7},
++    {183, 16, 2, 11},
++    {251, 31, 1, 15},
++    {243, 31, 1, 14},
++    {196, 13, 2, 13},
++    {235, 28, 1, 14},
++    {137, 17, 1, 13},
++    {215, 14, 2, 12},
++    {163, 19, 1, 13},
++    {155, 19, 1, 12},
++    {254, 33, 1, 11},
++    {131, 13, 1, 14},
++    {202, 21, 1, 13},
++    {231, 19, 1, 16},
++    {163, 19, 1, 11},
++    {255, 29, 1, 11},
++    {223, 17, 1, 16},
++    {215, 16, 1, 16},
++    {178, 23, 1, 9},
++    {183, 13, 1, 16},
++    {251, 31, 1, 9},
++    {172, 17, 1, 11},
++    {250, 19, 1, 14},
++    {215, 14, 1, 16},
++    {243, 31, 1, 8},
++    {255, 32, 1, 8},
++    {155, 19, 1, 8},
++    {183, 16, 1, 11},
++    {124, 9, 1, 13},
++    {95, 8, 1, 11},
++    {254, 21, 1, 11},
++    {243, 31, 1, 7},
++    {163, 11, 1, 13},
++    {196, 13, 1, 13},
++    {223, 21, 1, 9},
++    {235, 28, 1, 7},
++    {111, 13, 1, 7},
++    {243, 28, 1, 7},
++    {97, 7, 1, 11},
++    {215, 14, 1, 12},
++    {243, 17, 1, 11},
++    {194, 21, 1, 7},
++    {205, 17, 1, 9},
++    {155, 19, 1, 6},
++    {149, 12, 1, 9},
++    {235, 21, 1, 8},
++    {115, 9, 1, 9},
++    {131, 13, 1, 7},
++    {254, 29, 1, 6},
++    {145, 14, 1, 7},
++    {241, 23, 1, 7},
++    {231, 19, 1, 8},
++    {97, 7, 1, 9},
++    {131, 12, 1, 7},
++    {188, 17, 1, 7},
++    {243, 19, 1, 8},
++    {251, 31, 1, 5},
++    {223, 17, 1, 8},
++    {244, 21, 1, 7},
++    {215, 16, 1, 8},
++    {226, 19, 1, 7},
++    {227, 22, 1, 6},
++    {167, 12, 1, 8},
++    {183, 13, 1, 8},
++    {242, 17, 1, 8},
++    {214, 17, 1, 7},
++    {242, 19, 1, 7},
++    {103, 7, 1, 8},
++    {212, 19, 1, 6},
++    {250, 19, 1, 7},
++    {226, 17, 1, 7},
++    {215, 14, 1, 8},
++    {225, 29, 1, 4},
++    {243, 31, 1, 4},
++    {97, 7, 1, 7},
++    {255, 32, 1, 4},
++    {206, 17, 1, 6},
++    {155, 19, 1, 4},
++    {173, 12, 1, 7},
++    {183, 22, 1, 4},
++    {191, 13, 1, 7},
++    {195, 23, 1, 4},
++    {246, 23, 1, 5},
++    {95, 11, 1, 4},
++    {170, 13, 1, 6},
++    {255, 29, 1, 4},
++    {253, 19, 1, 6},
++    {215, 16, 1, 6},
++    {235, 26, 1, 4},
++    {155, 17, 1, 4},
++    {239, 26, 1, 4},
++    {167, 12, 1, 6},
++    {131, 14, 1, 4},
++    {151, 16, 1, 4},
++    {226, 19, 1, 5},
++    {211, 22, 1, 4},
++    {254, 21, 1, 5},
++    {161, 11, 1, 6},
++    {209, 17, 1, 5},
++    {119, 8, 1, 6},
++    {237, 19, 1, 5},
++    {131, 13, 1, 4},
++    {193, 19, 1, 4},
++    {215, 14, 1, 6},
++    {227, 22, 1, 4},
++    {239, 23, 1, 4},
++    {241, 23, 1, 4},
++    {95, 9, 1, 4},
++    {117, 11, 1, 4},
++    {75, 7, 1, 4},
++    {205, 19, 1, 4},
++    {87, 8, 1, 4},
++    {252, 23, 1, 4},
++    {193, 14, 1, 5},
++    {189, 17, 1, 4},
++    {235, 21, 1, 4},
++    {203, 18, 1, 4},
++    {159, 14, 1, 4},
++    {183, 16, 1, 4},
++    {187, 13, 1, 5},
++    {255, 22, 1, 4},
++    {248, 17, 1, 5},
++    {191, 13, 1, 5},
++    {71, 6, 1, 4},
++    {143, 12, 1, 4},
++    {254, 17, 1, 5},
++    {157, 13, 1, 4},
++    {231, 19, 1, 4},
++    {208, 17, 1, 4},
++    {234, 19, 1, 4},
++    {223, 18, 1, 4},
++    {237, 19, 1, 4},
++    {113, 9, 1, 4},
++    {139, 11, 1, 4},
++    {89, 7, 1, 4},
++    {243, 19, 1, 4},
++    {103, 8, 1, 4},
++    {246, 19, 1, 4},
++    {39, 3, 1, 4},
++    {223, 17, 1, 4},
++    {211, 16, 1, 4},
++    {239, 18, 1, 4},
++    {187, 14, 1, 4},
++    {215, 16, 1, 4},
++    {54, 4, 1, 4},
++    {231, 17, 1, 4},
++    {41, 3, 1, 4},
++    {55, 4, 1, 4},
++    {83, 6, 1, 4},
++    {167, 12, 1, 4},
++    {251, 18, 1, 4},
++    {183, 13, 1, 4},
++    {184, 13, 1, 4},
++    {242, 17, 1, 4},
++    {229, 16, 1, 4},
++    {187, 13, 1, 4},
++    {246, 17, 1, 4},
++    {131, 9, 1, 4},
++    {161, 11, 1, 4},
++    {103, 7, 1, 4},
++    {207, 14, 1, 4},
++    {119, 8, 1, 4},
++    {254, 17, 1, 4},
++    {45, 3, 1, 4},
++    {136, 9, 1, 4},
++    {243, 16, 1, 4},
++    {168, 11, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++    {215, 14, 1, 4},
++};
++
++static unsigned short us_PllLutMin = 2; // valid: 2 MHz and greater
++static unsigned short us_PllLutMax = sizeof(a_PllLUT)/sizeof(struct MT9M024_PLL_ENTRY);
++
++#endif
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024_sequencer.h linux-3.0.35/drivers/media/video/mxc/capture/mt9m024_sequencer.h
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mt9m024_sequencer.h	1970-01-01 05:30:00.000000000 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/mt9m024_sequencer.h	2013-12-18 17:00:49.000000000 +0530
+@@ -0,0 +1,295 @@
++/*
++ * Copyright 2013 Bluetechnix GmbH. All Rights Reserved.
++ *
++ * The code contained herein is licensed under the GNU General Public
++ * License. You may obtain a copy of the GNU General Public License
++ * Version 2 or later at the following locations:
++ *
++ * http://www.opensource.org/licenses/gpl-license.html
++ * http://www.gnu.org/copyleft/gpl.html
++ *
++ * Defines for Bluetechnix ISM-MT9M025 and ISM-AR0132 camera modules
++ * Author: Harald Krapfenbauer
++ */
++
++#ifndef __ISM_MT9M024_SEQUENCER_H__
++#define __ISM_MT9M024_SEQUENCER_H__
++
++unsigned short MT9M024sequencerReg[] = {
++0x25,
++0x5050,
++0x2D26,
++0x828,
++0xD17,
++0x926,
++0x28,
++0x526,
++0xA728,
++0x725,
++0x8080,
++0x2925,
++0x40,
++0x2702,
++0x1616,
++0x2706,
++0x1F17,
++0x3626,
++0xA617,
++0x326,
++0xA417,
++0x1F28,
++0x526,
++0x2028,
++0x425,
++0x2020,
++0x2700,
++0x171D,
++0x2500,
++0x2017,
++0x1219,
++0x1703,
++0x2706,
++0x1728,
++0x2805,
++0x171A,
++0x2660,
++0x175A,
++0x2317,
++0x1122,
++0x1741,
++0x2500,
++0x9027,
++0x26,
++0x1828,
++0x2E,
++0x2A28,
++0x81C,
++0x1470,
++0x7003,
++0x1470,
++0x7004,
++0x1470,
++0x7005,
++0x1470,
++0x7009,
++0x170C,
++0x14,
++0x20,
++0x14,
++0x50,
++0x314,
++0x20,
++0x314,
++0x50,
++0x414,
++0x20,
++0x414,
++0x50,
++0x514,
++0x20,
++0x2405,
++0x1400,
++0x5001,
++0x2550,
++0x502D,
++0x2608,
++0x280D,
++0x1709,
++0x2600,
++0x2805,
++0x26A7,
++0x2807,
++0x2580,
++0x8029,
++0x2500,
++0x4027,
++0x216,
++0x1627,
++0x620,
++0x1736,
++0x26A6,
++0x1703,
++0x26A4,
++0x171F,
++0x2805,
++0x2620,
++0x2804,
++0x2520,
++0x2027,
++0x17,
++0x1D25,
++0x20,
++0x1712,
++0x1A17,
++0x327,
++0x617,
++0x2828,
++0x517,
++0x1A26,
++0x6017,
++0xAE25,
++0x90,
++0x2700,
++0x2618,
++0x2800,
++0x2E2A,
++0x2808,
++0x1D05,
++0x1470,
++0x7009,
++0x1720,
++0x1400,
++0x2024,
++0x1400,
++0x5002,
++0x2550,
++0x502D,
++0x2608,
++0x280D,
++0x1709,
++0x2600,
++0x2805,
++0x26A7,
++0x2807,
++0x2580,
++0x8029,
++0x2500,
++0x4027,
++0x216,
++0x1627,
++0x617,
++0x3626,
++0xA617,
++0x326,
++0xA417,
++0x1F28,
++0x526,
++0x2028,
++0x425,
++0x2020,
++0x2700,
++0x171D,
++0x2500,
++0x2021,
++0x1712,
++0x1B17,
++0x327,
++0x617,
++0x2828,
++0x517,
++0x1A26,
++0x6017,
++0xAE25,
++0x90,
++0x2700,
++0x2618,
++0x2800,
++0x2E2A,
++0x2808,
++0x1E17,
++0xA05,
++0x1470,
++0x7009,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1616,
++0x1614,
++0x20,
++0x2414,
++0x50,
++0x2B2B,
++0x2C2C,
++0x2C2C,
++0x2C00 ,
++0x225,
++0x5050	,
++0x2D26	,
++0x828	,
++0xD17	,
++0x926	,
++0x28	,
++0x526	,
++0xA728	,
++0x725	,
++0x8080	,
++0x2917	,
++0x525	,
++0x40	,
++0x2702	,
++0x1616	,
++0x2706	,
++0x1736	,
++0x26A6	,
++0x1703	,
++0x26A4	,
++0x171F	,
++0x2805	,
++0x2620	,
++0x2804	,
++0x2520	,
++0x2027	,
++0x17	,
++0x1E25	,
++0x20	,
++0x2117	,
++0x1028	,
++0x51B	,
++0x1703	,
++0x2706	,
++0x1703	,
++0x1747	,
++0x2660	,
++0x17AE	,
++0x2500	,
++0x9027	,
++0x26	,
++0x1828	,
++0x2E	,
++0x2A28	,
++0x81E	,
++0x831	,
++0x1440	,
++0x4014	,
++0x2020	,
++0x1410	,
++0x1034	,
++0x1400	,
++0x1014	,
++0x20	,
++0x1400	,
++0x4013	,
++0x1802	,
++0x1470	,
++0x7004	,
++0x1470	,
++0x7003	,
++0x1470	,
++0x7017	,
++0x2002	,
++0x1400	,
++0x2002	,
++0x1400	,
++0x5004	,
++0x1400	,
++0x2004	,
++0x1400	,
++0x5022	,
++0x314	,
++0x20	,
++0x314	,
++0x50	,
++0x2C2C	,
++0x2C2C	,
++};
++
++#endif
+diff -Naur linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mxc_v4l2_capture.c linux-3.0.35/drivers/media/video/mxc/capture/mxc_v4l2_capture.c
+--- linux-3.0.35_svn_6/drivers/media/video/mxc/capture/mxc_v4l2_capture.c	2013-12-20 10:52:44.818319240 +0530
++++ linux-3.0.35/drivers/media/video/mxc/capture/mxc_v4l2_capture.c	2013-12-16 20:50:20.000000000 +0530
+@@ -18,6 +18,7 @@
+  *
+  * @ingroup MXC_V4L2_CAPTURE
+  */
++
+ #include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/init.h>
+@@ -44,6 +45,8 @@
+ #define init_MUTEX(sem)         sema_init(sem, 1)
+ #define MXC_SENSOR_NUM 2
+ 
++#define pr_Dbg pr_err
++
+ static int video_nr = -1;
+ 
+ /*! This data is used for the output to the display. */
+@@ -215,7 +218,7 @@
+ {
+ 	int i;
+ 
+-	pr_debug("MVC: In mxc_free_frame_buf\n");
++	pr_Dbg("MVC: In mxc_free_frame_buf\n");
+ 
+ 	for (i = 0; i < FRAME_NUM; i++) {
+ 		if (cam->frame[i].vaddress != 0) {
+@@ -241,7 +244,7 @@
+ {
+ 	int i;
+ 
+-	pr_debug("In MVC:mxc_allocate_frame_buf - size=%d\n",
++	pr_Dbg("In MVC:mxc_allocate_frame_buf - size=%d\n",
+ 		cam->v2f.fmt.pix.sizeimage);
+ 
+ 	for (i = 0; i < count; i++) {
+@@ -280,7 +283,7 @@
+ {
+ 	int i;
+ 
+-	pr_debug("In MVC:mxc_free_frames\n");
++	pr_Dbg("In MVC:mxc_free_frames\n");
+ 
+ 	for (i = 0; i < FRAME_NUM; i++) {
+ 		cam->frame[i].buffer.flags = V4L2_BUF_FLAG_MAPPED;
+@@ -302,7 +305,7 @@
+  */
+ static int mxc_v4l2_buffer_status(cam_data *cam, struct v4l2_buffer *buf)
+ {
+-	pr_debug("In MVC:mxc_v4l2_buffer_status\n");
++	pr_Dbg("In MVC:mxc_v4l2_buffer_status\n");
+ 
+ 	if (buf->index < 0 || buf->index >= FRAME_NUM) {
+ 		pr_err("ERROR: v4l2 capture: mxc_v4l2_buffer_status buffers "
+@@ -316,13 +319,13 @@
+ 
+ static int mxc_v4l2_release_bufs(cam_data *cam)
+ {
+-	pr_debug("In MVC:mxc_v4l2_release_bufs\n");
++	pr_Dbg("In MVC:mxc_v4l2_release_bufs\n");
+ 	return 0;
+ }
+ 
+ static int mxc_v4l2_prepare_bufs(cam_data *cam, struct v4l2_buffer *buf)
+ {
+-	pr_debug("In MVC:mxc_v4l2_prepare_bufs\n");
++	pr_Dbg("In MVC:mxc_v4l2_prepare_bufs\n");
+ 
+ 	if (buf->index < 0 || buf->index >= FRAME_NUM || buf->length <
+ 			PAGE_ALIGN(cam->v2f.fmt.pix.sizeimage)) {
+@@ -367,7 +370,9 @@
+ 		(palette == V4L2_PIX_FMT_YUYV) ||
+ 		(palette == V4L2_PIX_FMT_YUV420) ||
+ 		(palette == V4L2_PIX_FMT_YVU420) ||
+-		(palette == V4L2_PIX_FMT_NV12));
++		(palette == V4L2_PIX_FMT_NV12) ||
++		(palette == V4L2_PIX_FMT_GREY) ||
++		(palette == V4L2_PIX_FMT_Y16));
+ }
+ 
+ /*!
+@@ -383,7 +388,7 @@
+ 	unsigned long lock_flags;
+ 	int err = 0;
+ 
+-	pr_debug("In MVC:mxc_streamon\n");
++	pr_Dbg("In MVC:mxc_streamon\n");
+ 
+ 	if (NULL == cam) {
+ 		pr_err("ERROR! cam parameter is NULL\n");
+@@ -470,7 +475,7 @@
+ {
+ 	int err = 0;
+ 
+-	pr_debug("In MVC:mxc_streamoff\n");
++	pr_Dbg("In MVC:mxc_streamoff\n");
+ 
+ 	if (cam->capture_on == false)
+ 		return 0;
+@@ -517,7 +522,7 @@
+ 	bool foregound_fb = false;
+ 	mm_segment_t old_fs;
+ 
+-	pr_debug("In MVC: verify_preview\n");
++	pr_Dbg("In MVC: verify_preview\n");
+ 
+ 	do {
+ 		fbi = (struct fb_info *)registered_fb[i];
+@@ -538,7 +543,7 @@
+ 			}
+ 			if (ipu_ch == MEM_BG_SYNC) {
+ 				bg_fbi = fbi;
+-				pr_debug("Found background frame buffer.\n");
++				pr_Dbg("Found background frame buffer.\n");
+ 			}
+ 		}
+ 
+@@ -644,7 +649,7 @@
+ {
+ 	int err = 0;
+ 
+-	pr_debug("MVC: start_preview\n");
++	pr_Dbg("MVC: start_preview\n");
+ 
+ 	if (cam->v4l2_fb.flags == V4L2_FBUF_FLAG_OVERLAY)
+ 	#ifdef CONFIG_MXC_IPU_PRP_VF_SDC
+@@ -670,16 +675,16 @@
+ 	if (cam->vf_enable_csi)
+ 		err = cam->vf_enable_csi(cam);
+ 
+-	pr_debug("End of %s: v2f pix widthxheight %d x %d\n",
++	pr_Dbg("End of %s: v2f pix widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->v2f.fmt.pix.width, cam->v2f.fmt.pix.height);
+-	pr_debug("End of %s: crop_bounds widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_bounds widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_bounds.width, cam->crop_bounds.height);
+-	pr_debug("End of %s: crop_defrect widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_defrect widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_defrect.width, cam->crop_defrect.height);
+-	pr_debug("End of %s: crop_current widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_current widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_current.width, cam->crop_current.height);
+ 
+@@ -742,32 +747,32 @@
+ {
+ 	int retval = 0;
+ 
+-	pr_debug("In MVC: mxc_v4l2_g_fmt type=%d\n", f->type);
++	pr_Dbg("In MVC: mxc_v4l2_g_fmt type=%d\n", f->type);
+ 
+ 	switch (f->type) {
+ 	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
+-		pr_debug("   type is V4L2_BUF_TYPE_VIDEO_CAPTURE\n");
++		pr_Dbg("   type is V4L2_BUF_TYPE_VIDEO_CAPTURE\n");
+ 		f->fmt.pix = cam->v2f.fmt.pix;
+ 		break;
+ 	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+-		pr_debug("   type is V4L2_BUF_TYPE_VIDEO_OVERLAY\n");
++		pr_Dbg("   type is V4L2_BUF_TYPE_VIDEO_OVERLAY\n");
+ 		f->fmt.win = cam->win;
+ 		break;
+ 	default:
+-		pr_debug("   type is invalid\n");
++		pr_Dbg("   type is invalid\n");
+ 		retval = -EINVAL;
+ 	}
+ 
+-	pr_debug("End of %s: v2f pix widthxheight %d x %d\n",
++	pr_Dbg("End of %s: v2f pix widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->v2f.fmt.pix.width, cam->v2f.fmt.pix.height);
+-	pr_debug("End of %s: crop_bounds widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_bounds widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_bounds.width, cam->crop_bounds.height);
+-	pr_debug("End of %s: crop_defrect widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_defrect widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_defrect.width, cam->crop_defrect.height);
+-	pr_debug("End of %s: crop_current widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_current widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_current.width, cam->crop_current.height);
+ 
+@@ -790,11 +795,11 @@
+ 	int bytesperline = 0;
+ 	int *width, *height;
+ 
+-	pr_debug("In MVC: mxc_v4l2_s_fmt\n");
++	pr_Dbg("In MVC: mxc_v4l2_s_fmt\n");
+ 
+ 	switch (f->type) {
+ 	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
+-		pr_debug("   type=V4L2_BUF_TYPE_VIDEO_CAPTURE\n");
++		pr_Dbg("   type=V4L2_BUF_TYPE_VIDEO_CAPTURE\n");
+ 		if (!valid_mode(f->fmt.pix.pixelformat)) {
+ 			pr_err("ERROR: v4l2 capture: mxc_v4l2_s_fmt: format "
+ 			       "not supported\n");
+@@ -890,6 +895,16 @@
+ 			size = f->fmt.pix.width * f->fmt.pix.height * 3 / 2;
+ 			bytesperline = f->fmt.pix.width;
+ 			break;
++		case V4L2_PIX_FMT_GREY:
++			pr_Dbg("############format=V4L2_PIX_FMT_GREY\n");
++			size = f->fmt.pix.width * f->fmt.pix.height;
++			bytesperline = f->fmt.pix.width;
++			break;
++		case V4L2_PIX_FMT_Y16:
++			pr_Dbg("###########format=V4L2_PIX_FMT_Y16\n");
++			size = f->fmt.pix.width * f->fmt.pix.height*2;
++			bytesperline = f->fmt.pix.width*2;
++			break;
+ 		default:
+ 			break;
+ 		}
+@@ -918,7 +933,7 @@
+ 		}
+ 		break;
+ 	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+-		pr_debug("   type=V4L2_BUF_TYPE_VIDEO_OVERLAY\n");
++		pr_Dbg("   type=V4L2_BUF_TYPE_VIDEO_OVERLAY\n");
+ 		retval = verify_preview(cam, &f->fmt.win);
+ 		cam->win = f->fmt.win;
+ 		break;
+@@ -926,16 +941,16 @@
+ 		retval = -EINVAL;
+ 	}
+ 
+-	pr_debug("End of %s: v2f pix widthxheight %d x %d\n",
++	pr_Dbg("End of %s: v2f pix widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->v2f.fmt.pix.width, cam->v2f.fmt.pix.height);
+-	pr_debug("End of %s: crop_bounds widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_bounds widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_bounds.width, cam->crop_bounds.height);
+-	pr_debug("End of %s: crop_defrect widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_defrect widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_defrect.width, cam->crop_defrect.height);
+-	pr_debug("End of %s: crop_current widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_current widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_current.width, cam->crop_current.height);
+ 
+@@ -955,7 +970,7 @@
+ {
+ 	int status = 0;
+ 
+-	pr_debug("In MVC:mxc_v4l2_g_ctrl\n");
++	pr_Dbg("In MVC:mxc_v4l2_g_ctrl\n");
+ 
+ 	/* probably don't need to store the values that can be retrieved,
+ 	 * locally, but they are for now. */
+@@ -1071,7 +1086,7 @@
+ 	int tmp_rotation = IPU_ROTATE_NONE;
+ 	struct sensor_data *sensor_data;
+ 
+-	pr_debug("In MVC:mxc_v4l2_s_ctrl\n");
++	pr_Dbg("In MVC:mxc_v4l2_s_ctrl\n");
+ 
+ 	switch (c->id) {
+ 	case V4L2_CID_HFLIP:
+@@ -1243,7 +1258,7 @@
+ 		}
+ 		break;
+ 	default:
+-		pr_debug("   default case\n");
++		pr_Dbg("   default case\n");
+ 		ret = -EINVAL;
+ 		break;
+ 	}
+@@ -1269,7 +1284,7 @@
+ 	u32 current_fps, parm_fps;
+ 	int err = 0;
+ 
+-	pr_debug("In mxc_v4l2_s_param\n");
++	pr_Dbg("In mxc_v4l2_s_param\n");
+ 
+ 	if (parm->type != V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+ 		pr_err(KERN_ERR "mxc_v4l2_s_param invalid type\n");
+@@ -1296,12 +1311,12 @@
+ 	parm_fps = parm->parm.capture.timeperframe.denominator
+ 			/ parm->parm.capture.timeperframe.numerator;
+ 
+-	pr_debug("   Current capabilities are %x\n",
++	pr_Dbg("   Current capabilities are %x\n",
+ 			currentparm.parm.capture.capability);
+-	pr_debug("   Current capturemode is %d  change to %d\n",
++	pr_Dbg("   Current capturemode is %d  change to %d\n",
+ 			currentparm.parm.capture.capturemode,
+ 			parm->parm.capture.capturemode);
+-	pr_debug("   Current framerate is %d  change to %d\n",
++	pr_Dbg("   Current framerate is %d  change to %d\n",
+ 			current_fps, parm_fps);
+ 
+ 	/* This will change any camera settings needed. */
+@@ -1331,7 +1346,7 @@
+ 	csi_param.csi = cam->csi;
+ 	csi_param.mclk = 0;
+ 
+-	pr_debug("   clock_curr=mclk=%d\n", ifparm.u.bt656.clock_curr);
++	pr_Dbg("   clock_curr=mclk=%d\n", ifparm.u.bt656.clock_curr);
+ 	if (ifparm.u.bt656.clock_curr == 0)
+ 		csi_param.clk_mode = IPU_CSI_CLK_MODE_CCIR656_INTERLACED;
+ 	else
+@@ -1339,14 +1354,12 @@
+ 
+ 	csi_param.pixclk_pol = ifparm.u.bt656.latch_clk_inv;
+ 
+-	if (ifparm.u.bt656.mode == V4L2_IF_TYPE_BT656_MODE_NOBT_8BIT) {
++	if (ifparm.u.bt656.mode == V4L2_IF_TYPE_BT656_MODE_NOBT_8BIT)
+ 		csi_param.data_width = IPU_CSI_DATA_WIDTH_8;
+-	} else if (ifparm.u.bt656.mode
+-				== V4L2_IF_TYPE_BT656_MODE_NOBT_10BIT) {
+-		csi_param.data_width = IPU_CSI_DATA_WIDTH_10;
+-	} else {
++	else if (ifparm.u.bt656.mode == V4L2_IF_TYPE_BT656_MODE_NOBT_12BIT)
++		csi_param.data_width = IPU_CSI_DATA_WIDTH_12;
++	else
+ 		csi_param.data_width = IPU_CSI_DATA_WIDTH_8;
+-	}
+ 
+ 	csi_param.Vsync_pol = ifparm.u.bt656.nobt_vs_inv;
+ 	csi_param.Hsync_pol = ifparm.u.bt656.nobt_hs_inv;
+@@ -1355,7 +1368,7 @@
+ 	/* if the capturemode changed, the size bounds will have changed. */
+ 	cam_fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	vidioc_int_g_fmt_cap(cam->sensor, &cam_fmt);
+-	pr_debug("   g_fmt_cap returns widthxheight of input as %d x %d\n",
++	pr_Dbg("   g_fmt_cap returns widthxheight of input as %d x %d\n",
+ 			cam_fmt.fmt.pix.width, cam_fmt.fmt.pix.height);
+ 
+ 	csi_param.data_fmt = cam_fmt.fmt.pix.pixelformat;
+@@ -1405,14 +1418,14 @@
+  */
+ static int mxc_v4l2_s_std(cam_data *cam, v4l2_std_id e)
+ {
+-	pr_debug("In mxc_v4l2_s_std %Lx\n", e);
++	pr_Dbg("In mxc_v4l2_s_std %Lx\n", e);
+ 
+ 	if (e == V4L2_STD_PAL) {
+-		pr_debug("   Setting standard to PAL %Lx\n", V4L2_STD_PAL);
++		pr_Dbg("   Setting standard to PAL %Lx\n", V4L2_STD_PAL);
+ 		cam->standard.id = V4L2_STD_PAL;
+ 		video_index = TV_PAL;
+ 	} else if (e == V4L2_STD_NTSC) {
+-		pr_debug("   Setting standard to NTSC %Lx\n",
++		pr_Dbg("   Setting standard to NTSC %Lx\n",
+ 				V4L2_STD_NTSC);
+ 		/* Get rid of the white dot line in NTSC signal input */
+ 		cam->standard.id = V4L2_STD_NTSC;
+@@ -1451,7 +1464,7 @@
+ {
+ 	struct v4l2_format tv_fmt;
+ 
+-	pr_debug("In mxc_v4l2_g_std\n");
++	pr_Dbg("In mxc_v4l2_g_std\n");
+ 
+ 	if (cam->device_type == 1) {
+ 		/* Use this function to get what the TV-In device detects the
+@@ -1464,7 +1477,7 @@
+ 		 * changes, the settings need to change. */
+ 		if (cam->standard_autodetect) {
+ 			if (cam->standard.id != tv_fmt.fmt.pix.pixelformat) {
+-				pr_debug("MVC: mxc_v4l2_g_std: "
++				pr_Dbg("MVC: mxc_v4l2_g_std: "
+ 					"Changing standard\n");
+ 				mxc_v4l2_s_std(cam, tv_fmt.fmt.pix.pixelformat);
+ 			}
+@@ -1491,7 +1504,7 @@
+ 	struct mxc_v4l_frame *frame;
+ 	unsigned long lock_flags;
+ 
+-	pr_debug("In MVC:mxc_v4l_dqueue\n");
++	//pr_Dbg("In MVC:mxc_v4l_dqueue\n");
+ 
+ 	if (!wait_event_interruptible_timeout(cam->enc_queue,
+ 					      cam->enc_counter != 0, 10 * HZ)) {
+@@ -1554,8 +1567,8 @@
+ 	cam_data *cam = video_get_drvdata(dev);
+ 	int err = 0;
+ 
+-	pr_debug("\nIn MVC: mxc_v4l_open\n");
+-	pr_debug("   device name is %s\n", dev->name);
++	pr_Dbg("\nIn MVC: mxc_v4l_open\n");
++	pr_Dbg("   device name is %s\n", dev->name);
+ 
+ 	if (!cam) {
+ 		pr_err("ERROR: v4l2 capture: Internal error, "
+@@ -1611,16 +1624,14 @@
+ 
+ 		csi_param.pixclk_pol = ifparm.u.bt656.latch_clk_inv;
+ 
+-		if (ifparm.u.bt656.mode
+-				== V4L2_IF_TYPE_BT656_MODE_NOBT_8BIT)
++		if (ifparm.u.bt656.mode == V4L2_IF_TYPE_BT656_MODE_NOBT_8BIT)
+ 			csi_param.data_width = IPU_CSI_DATA_WIDTH_8;
+-		else if (ifparm.u.bt656.mode
+-				== V4L2_IF_TYPE_BT656_MODE_NOBT_10BIT)
+-			csi_param.data_width = IPU_CSI_DATA_WIDTH_10;
++		else if (ifparm.u.bt656.mode ==
++			V4L2_IF_TYPE_BT656_MODE_NOBT_12BIT)
++			csi_param.data_width = IPU_CSI_DATA_WIDTH_12;
+ 		else
+ 			csi_param.data_width = IPU_CSI_DATA_WIDTH_8;
+ 
+-
+ 		csi_param.Vsync_pol = ifparm.u.bt656.nobt_vs_inv;
+ 		csi_param.Hsync_pol = ifparm.u.bt656.nobt_hs_inv;
+ 
+@@ -1645,21 +1656,21 @@
+ 		cam->crop_current.width = cam_fmt.fmt.pix.width;
+ 		cam->crop_current.height = cam_fmt.fmt.pix.height;
+ 
+-		pr_debug("End of %s: v2f pix widthxheight %d x %d\n",
++		pr_Dbg("End of %s: v2f pix widthxheight %d x %d\n",
+ 			__func__,
+ 			cam->v2f.fmt.pix.width, cam->v2f.fmt.pix.height);
+-		pr_debug("End of %s: crop_bounds widthxheight %d x %d\n",
++		pr_Dbg("End of %s: crop_bounds widthxheight %d x %d\n",
+ 			__func__,
+ 			cam->crop_bounds.width, cam->crop_bounds.height);
+-		pr_debug("End of %s: crop_defrect widthxheight %d x %d\n",
++		pr_Dbg("End of %s: crop_defrect widthxheight %d x %d\n",
+ 			__func__,
+ 			cam->crop_defrect.width, cam->crop_defrect.height);
+-		pr_debug("End of %s: crop_current widthxheight %d x %d\n",
++		pr_Dbg("End of %s: crop_current widthxheight %d x %d\n",
+ 			__func__,
+ 			cam->crop_current.width, cam->crop_current.height);
+ 
+ 		csi_param.data_fmt = cam_fmt.fmt.pix.pixelformat;
+-		pr_debug("On Open: Input to ipu size is %d x %d\n",
++		pr_Dbg("On Open: Input to ipu size is %d x %d\n",
+ 				cam_fmt.fmt.pix.width, cam_fmt.fmt.pix.height);
+ 		ipu_csi_set_window_size(cam->ipu, cam->crop_current.width,
+ 					cam->crop_current.height,
+@@ -1703,7 +1714,7 @@
+ 	int err = 0;
+ 	cam_data *cam = video_get_drvdata(dev);
+ 
+-	pr_debug("In MVC:mxc_v4l_close\n");
++	pr_Dbg("In MVC:mxc_v4l_close\n");
+ 
+ 	if (!cam) {
+ 		pr_err("ERROR: v4l2 capture: Internal error, "
+@@ -1734,7 +1745,7 @@
+ 
+ 		wait_event_interruptible(cam->power_queue,
+ 					 cam->low_power == false);
+-		pr_debug("mxc_v4l_close: release resource\n");
++		pr_Dbg("mxc_v4l_close: release resource\n");
+ 
+ 		if (strcmp(mxc_capture_inputs[cam->current_input].name,
+ 			   "CSI MEM") == 0) {
+@@ -1873,7 +1884,7 @@
+ 	int retval = 0;
+ 	unsigned long lock_flags;
+ 
+-	pr_debug("In MVC: mxc_v4l_do_ioctl %x\n", ioctlnr);
++	//pr_Dbg("In MVC: mxc_v4l_do_ioctl %x\n", ioctlnr);
+ 	wait_event_interruptible(cam->power_queue, cam->low_power == false);
+ 	/* make this _really_ smp-safe */
+ 	if (ioctlnr != VIDIOC_DQBUF)
+@@ -1886,7 +1897,7 @@
+ 	 */
+ 	case VIDIOC_QUERYCAP: {
+ 		struct v4l2_capability *cap = arg;
+-		pr_debug("   case VIDIOC_QUERYCAP\n");
++		pr_Dbg("   case VIDIOC_QUERYCAP\n");
+ 		strcpy(cap->driver, "mxc_v4l2");
+ 		cap->version = KERNEL_VERSION(0, 1, 11);
+ 		cap->capabilities = V4L2_CAP_VIDEO_CAPTURE |
+@@ -1903,7 +1914,7 @@
+ 	 */
+ 	case VIDIOC_G_FMT: {
+ 		struct v4l2_format *gf = arg;
+-		pr_debug("   case VIDIOC_G_FMT\n");
++		pr_Dbg("   case VIDIOC_G_FMT\n");
+ 		retval = mxc_v4l2_g_fmt(cam, gf);
+ 		break;
+ 	}
+@@ -1913,7 +1924,7 @@
+ 	 */
+ 	case VIDIOC_S_FMT: {
+ 		struct v4l2_format *sf = arg;
+-		pr_debug("   case VIDIOC_S_FMT\n");
++		pr_Dbg("   case VIDIOC_S_FMT\n");
+ 		retval = mxc_v4l2_s_fmt(cam, sf);
+ 		break;
+ 	}
+@@ -1923,7 +1934,7 @@
+ 	 */
+ 	case VIDIOC_REQBUFS: {
+ 		struct v4l2_requestbuffers *req = arg;
+-		pr_debug("   case VIDIOC_REQBUFS\n");
++		pr_Dbg("   case VIDIOC_REQBUFS\n");
+ 
+ 		if (req->count > FRAME_NUM) {
+ 			pr_err("ERROR: v4l2 capture: VIDIOC_REQBUFS: "
+@@ -1952,7 +1963,7 @@
+ 	case VIDIOC_QUERYBUF: {
+ 		struct v4l2_buffer *buf = arg;
+ 		int index = buf->index;
+-		pr_debug("   case VIDIOC_QUERYBUF\n");
++		pr_Dbg("   case VIDIOC_QUERYBUF\n");
+ 
+ 		if (buf->type != V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+ 			pr_err("ERROR: v4l2 capture: "
+@@ -1985,7 +1996,7 @@
+ 	case VIDIOC_QBUF: {
+ 		struct v4l2_buffer *buf = arg;
+ 		int index = buf->index;
+-		pr_debug("   case VIDIOC_QBUF\n");
++		//pr_Dbg("   case VIDIOC_QBUF\n");
+ 
+ 		spin_lock_irqsave(&cam->queue_int_lock, lock_flags);
+ 		if ((cam->frame[index].buffer.flags & 0x7) ==
+@@ -2020,7 +2031,7 @@
+ 	 */
+ 	case VIDIOC_DQBUF: {
+ 		struct v4l2_buffer *buf = arg;
+-		pr_debug("   case VIDIOC_DQBUF\n");
++		//pr_Dbg("   case VIDIOC_DQBUF\n");
+ 
+ 		if ((cam->enc_counter == 0) &&
+ 			(file->f_flags & O_NONBLOCK)) {
+@@ -2036,7 +2047,7 @@
+ 	 * V4l2 VIDIOC_STREAMON ioctl
+ 	 */
+ 	case VIDIOC_STREAMON: {
+-		pr_debug("   case VIDIOC_STREAMON\n");
++		pr_Dbg("   case VIDIOC_STREAMON\n");
+ 		retval = mxc_streamon(cam);
+ 		break;
+ 	}
+@@ -2045,7 +2056,7 @@
+ 	 * V4l2 VIDIOC_STREAMOFF ioctl
+ 	 */
+ 	case VIDIOC_STREAMOFF: {
+-		pr_debug("   case VIDIOC_STREAMOFF\n");
++		pr_Dbg("   case VIDIOC_STREAMOFF\n");
+ 		retval = mxc_streamoff(cam);
+ 		break;
+ 	}
+@@ -2054,7 +2065,7 @@
+ 	 * V4l2 VIDIOC_G_CTRL ioctl
+ 	 */
+ 	case VIDIOC_G_CTRL: {
+-		pr_debug("   case VIDIOC_G_CTRL\n");
++		pr_Dbg("   case VIDIOC_G_CTRL\n");
+ 		retval = mxc_v4l2_g_ctrl(cam, arg);
+ 		break;
+ 	}
+@@ -2063,7 +2074,7 @@
+ 	 * V4l2 VIDIOC_S_CTRL ioctl
+ 	 */
+ 	case VIDIOC_S_CTRL: {
+-		pr_debug("   case VIDIOC_S_CTRL\n");
++		pr_Dbg("   case VIDIOC_S_CTRL\n");
+ 		retval = mxc_v4l2_s_ctrl(cam, arg);
+ 		break;
+ 	}
+@@ -2073,7 +2084,7 @@
+ 	 */
+ 	case VIDIOC_CROPCAP: {
+ 		struct v4l2_cropcap *cap = arg;
+-		pr_debug("   case VIDIOC_CROPCAP\n");
++		pr_Dbg("   case VIDIOC_CROPCAP\n");
+ 		if (cap->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+ 		    cap->type != V4L2_BUF_TYPE_VIDEO_OVERLAY) {
+ 			retval = -EINVAL;
+@@ -2089,7 +2100,7 @@
+ 	 */
+ 	case VIDIOC_G_CROP: {
+ 		struct v4l2_crop *crop = arg;
+-		pr_debug("   case VIDIOC_G_CROP\n");
++		pr_Dbg("   case VIDIOC_G_CROP\n");
+ 
+ 		if (crop->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+ 		    crop->type != V4L2_BUF_TYPE_VIDEO_OVERLAY) {
+@@ -2106,7 +2117,7 @@
+ 	case VIDIOC_S_CROP: {
+ 		struct v4l2_crop *crop = arg;
+ 		struct v4l2_rect *b = &cam->crop_bounds;
+-		pr_debug("   case VIDIOC_S_CROP\n");
++		pr_Dbg("   case VIDIOC_S_CROP\n");
+ 
+ 		if (crop->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+ 		    crop->type != V4L2_BUF_TYPE_VIDEO_OVERLAY) {
+@@ -2134,7 +2145,7 @@
+ 		crop->c.left -= crop->c.left % 4;
+ 		cam->crop_current = crop->c;
+ 
+-		pr_debug("   Cropping Input to ipu size %d x %d\n",
++		pr_Dbg("   Cropping Input to ipu size %d x %d\n",
+ 				cam->crop_current.width,
+ 				cam->crop_current.height);
+ 		ipu_csi_set_window_size(cam->ipu, cam->crop_current.width,
+@@ -2151,7 +2162,7 @@
+ 	 */
+ 	case VIDIOC_OVERLAY: {
+ 		int *on = arg;
+-		pr_debug("   VIDIOC_OVERLAY on=%d\n", *on);
++		pr_Dbg("   VIDIOC_OVERLAY on=%d\n", *on);
+ 		if (*on) {
+ 			cam->overlay_on = true;
+ 			cam->overlay_pid = current->pid;
+@@ -2169,7 +2180,7 @@
+ 	 */
+ 	case VIDIOC_G_FBUF: {
+ 		struct v4l2_framebuffer *fb = arg;
+-		pr_debug("   case VIDIOC_G_FBUF\n");
++		pr_Dbg("   case VIDIOC_G_FBUF\n");
+ 		*fb = cam->v4l2_fb;
+ 		fb->capability = V4L2_FBUF_CAP_EXTERNOVERLAY;
+ 		break;
+@@ -2180,14 +2191,14 @@
+ 	 */
+ 	case VIDIOC_S_FBUF: {
+ 		struct v4l2_framebuffer *fb = arg;
+-		pr_debug("   case VIDIOC_S_FBUF\n");
++		pr_Dbg("   case VIDIOC_S_FBUF\n");
+ 		cam->v4l2_fb = *fb;
+ 		break;
+ 	}
+ 
+ 	case VIDIOC_G_PARM: {
+ 		struct v4l2_streamparm *parm = arg;
+-		pr_debug("   case VIDIOC_G_PARM\n");
++		pr_Dbg("   case VIDIOC_G_PARM\n");
+ 		if (cam->sensor)
+ 			retval = vidioc_int_g_parm(cam->sensor, parm);
+ 		else {
+@@ -2199,7 +2210,7 @@
+ 
+ 	case VIDIOC_S_PARM:  {
+ 		struct v4l2_streamparm *parm = arg;
+-		pr_debug("   case VIDIOC_S_PARM\n");
++		pr_Dbg("   case VIDIOC_S_PARM\n");
+ 		if (cam->sensor)
+ 			retval = mxc_v4l2_s_param(cam, parm);
+ 		else {
+@@ -2212,14 +2223,14 @@
+ 	/* linux v4l2 bug, kernel c0485619 user c0405619 */
+ 	case VIDIOC_ENUMSTD: {
+ 		struct v4l2_standard *e = arg;
+-		pr_debug("   case VIDIOC_ENUMSTD\n");
++		pr_Dbg("   case VIDIOC_ENUMSTD\n");
+ 		*e = cam->standard;
+ 		break;
+ 	}
+ 
+ 	case VIDIOC_G_STD: {
+ 		v4l2_std_id *e = arg;
+-		pr_debug("   case VIDIOC_G_STD\n");
++		pr_Dbg("   case VIDIOC_G_STD\n");
+ 		if (cam->sensor)
+ 			retval = mxc_v4l2_g_std(cam, e);
+ 		else {
+@@ -2231,7 +2242,7 @@
+ 
+ 	case VIDIOC_S_STD: {
+ 		v4l2_std_id *e = arg;
+-		pr_debug("   case VIDIOC_S_STD\n");
++		pr_Dbg("   case VIDIOC_S_STD\n");
+ 		retval = mxc_v4l2_s_std(cam, *e);
+ 
+ 		break;
+@@ -2239,7 +2250,7 @@
+ 
+ 	case VIDIOC_ENUMOUTPUT: {
+ 		struct v4l2_output *output = arg;
+-		pr_debug("   case VIDIOC_ENUMOUTPUT\n");
++		pr_Dbg("   case VIDIOC_ENUMOUTPUT\n");
+ 		if (output->index >= MXC_V4L2_CAPTURE_NUM_OUTPUTS) {
+ 			retval = -EINVAL;
+ 			break;
+@@ -2250,14 +2261,14 @@
+ 	}
+ 	case VIDIOC_G_OUTPUT: {
+ 		int *p_output_num = arg;
+-		pr_debug("   case VIDIOC_G_OUTPUT\n");
++		pr_Dbg("   case VIDIOC_G_OUTPUT\n");
+ 		*p_output_num = cam->output;
+ 		break;
+ 	}
+ 
+ 	case VIDIOC_S_OUTPUT: {
+ 		int *p_output_num = arg;
+-		pr_debug("   case VIDIOC_S_OUTPUT\n");
++		pr_Dbg("   case VIDIOC_S_OUTPUT\n");
+ 		if (*p_output_num >= MXC_V4L2_CAPTURE_NUM_OUTPUTS) {
+ 			retval = -EINVAL;
+ 			break;
+@@ -2268,7 +2279,7 @@
+ 
+ 	case VIDIOC_ENUMINPUT: {
+ 		struct v4l2_input *input = arg;
+-		pr_debug("   case VIDIOC_ENUMINPUT\n");
++		pr_Dbg("   case VIDIOC_ENUMINPUT\n");
+ 		if (input->index >= MXC_V4L2_CAPTURE_NUM_INPUTS) {
+ 			retval = -EINVAL;
+ 			break;
+@@ -2279,14 +2290,14 @@
+ 
+ 	case VIDIOC_G_INPUT: {
+ 		int *index = arg;
+-		pr_debug("   case VIDIOC_G_INPUT\n");
++		pr_Dbg("   case VIDIOC_G_INPUT\n");
+ 		*index = cam->current_input;
+ 		break;
+ 	}
+ 
+ 	case VIDIOC_S_INPUT: {
+ 		int *index = arg;
+-		pr_debug("   case VIDIOC_S_INPUT\n");
++		pr_Dbg("   case VIDIOC_S_INPUT\n");
+ 		if (*index >= MXC_V4L2_CAPTURE_NUM_INPUTS) {
+ 			retval = -EINVAL;
+ 			break;
+@@ -2362,7 +2373,7 @@
+ 	case VIDIOC_G_FREQUENCY:
+ 	case VIDIOC_S_FREQUENCY:
+ 	default:
+-		pr_debug("   case default or not supported\n");
++		pr_Dbg("   case default or not supported\n");
+ 		retval = -EINVAL;
+ 		break;
+ 	}
+@@ -2380,7 +2391,7 @@
+ static long mxc_v4l_ioctl(struct file *file, unsigned int cmd,
+ 			 unsigned long arg)
+ {
+-	pr_debug("In MVC:mxc_v4l_ioctl\n");
++	//pr_Dbg("In MVC:mxc_v4l_ioctl\n");
+ 	return video_usercopy(file, cmd, arg, mxc_v4l_do_ioctl);
+ }
+ 
+@@ -2400,8 +2411,8 @@
+ 	int res = 0;
+ 	cam_data *cam = video_get_drvdata(dev);
+ 
+-	pr_debug("In MVC:mxc_mmap\n");
+-	pr_debug("   pgoff=0x%lx, start=0x%lx, end=0x%lx\n",
++	pr_Dbg("In MVC:mxc_mmap\n");
++	pr_Dbg("   pgoff=0x%lx, start=0x%lx, end=0x%lx\n",
+ 		 vma->vm_pgoff, vma->vm_start, vma->vm_end);
+ 
+ 	/* make this _really_ smp-safe */
+@@ -2442,7 +2453,7 @@
+ 	wait_queue_head_t *queue = NULL;
+ 	int res = POLLIN | POLLRDNORM;
+ 
+-	pr_debug("In MVC:mxc_poll\n");
++	pr_Dbg("In MVC:mxc_poll\n");
+ 
+ 	if (down_interruptible(&cam->busy_lock))
+ 		return -EINTR;
+@@ -2500,7 +2511,7 @@
+ 	if (cam == NULL)
+ 		return;
+ 
+-	pr_debug("In MVC:camera_callback\n");
++	//pr_Dbg("In MVC:camera_callback\n");
+ 
+ 	spin_lock(&cam->queue_int_lock);
+ 	spin_lock(&cam->dqueue_int_lock);
+@@ -2575,7 +2586,7 @@
+ {
+ 	struct fsl_mxc_capture_platform_data *pdata = pdev->dev.platform_data;
+ 
+-	pr_debug("In MVC: init_camera_struct\n");
++	pr_Dbg("In MVC: init_camera_struct\n");
+ 	/* Default everything to 0 */
+ 	memset(cam, 0, sizeof(cam_data));
+ 
+@@ -2724,7 +2735,7 @@
+ 		pr_err("ERROR: v4l2 capture: video_register_device failed\n");
+ 		return -1;
+ 	}
+-	pr_debug("   Video device registered: %s #%d\n",
++	pr_Dbg("   Video device registered: %s #%d\n",
+ 		 cam->video_dev->name, cam->video_dev->minor);
+ 
+ 	if (device_create_file(&cam->video_dev->dev,
+@@ -2795,7 +2806,7 @@
+ {
+ 	cam_data *cam = platform_get_drvdata(pdev);
+ 
+-	pr_debug("In MVC:mxc_v4l2_suspend\n");
++	pr_Dbg("In MVC:mxc_v4l2_suspend\n");
+ 
+ 	if (cam == NULL) {
+ 		return -1;
+@@ -2839,7 +2850,7 @@
+ {
+ 	cam_data *cam = platform_get_drvdata(pdev);
+ 
+-	pr_debug("In MVC:mxc_v4l2_resume\n");
++	pr_Dbg("In MVC:mxc_v4l2_resume\n");
+ 
+ 	if (cam == NULL) {
+ 		return -1;
+@@ -2895,9 +2906,9 @@
+ 	int i;
+ 	struct sensor_data *sdata = slave->priv;
+ 
+-	pr_debug("In MVC: mxc_v4l2_master_attach\n");
+-	pr_debug("   slave.name = %s\n", slave->name);
+-	pr_debug("   master.name = %s\n", slave->u.slave->master->name);
++	pr_Dbg("In MVC: mxc_v4l2_master_attach\n");
++	pr_Dbg("   slave.name = %s\n", slave->name);
++	pr_Dbg("   master.name = %s\n", slave->u.slave->master->name);
+ 
+ 	if (slave == NULL) {
+ 		pr_err("ERROR: v4l2 capture: slave parameter not valid.\n");
+@@ -2905,7 +2916,7 @@
+ 	}
+ 
+ 	if (sdata->csi != cam->csi) {
+-		pr_debug("%s: csi doesn't match\n", __func__);
++		pr_Dbg("%s: csi doesn't match\n", __func__);
+ 		return -1;
+ 	}
+ 
+@@ -2945,16 +2956,16 @@
+ 	cam->crop_current.width = cam_fmt.fmt.pix.width;
+ 	cam->crop_current.height = cam_fmt.fmt.pix.height;
+ 
+-	pr_debug("End of %s: v2f pix widthxheight %d x %d\n",
++	pr_Dbg("End of %s: v2f pix widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->v2f.fmt.pix.width, cam->v2f.fmt.pix.height);
+-	pr_debug("End of %s: crop_bounds widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_bounds widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_bounds.width, cam->crop_bounds.height);
+-	pr_debug("End of %s: crop_defrect widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_defrect widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_defrect.width, cam->crop_defrect.height);
+-	pr_debug("End of %s: crop_current widthxheight %d x %d\n",
++	pr_Dbg("End of %s: crop_current widthxheight %d x %d\n",
+ 		 __func__,
+ 		 cam->crop_current.width, cam->crop_current.height);
+ 
+@@ -2969,7 +2980,7 @@
+ 	unsigned int i;
+ 	cam_data *cam = slave->u.slave->master->priv;
+ 
+-	pr_debug("In MVC:mxc_v4l2_master_detach\n");
++	pr_Dbg("In MVC:mxc_v4l2_master_detach\n");
+ 
+ 	if (cam->sensor_index > 1) {
+ 		for (i = 0; i < cam->sensor_index; i++) {
+@@ -3000,7 +3011,7 @@
+ {
+ 	u8 err = 0;
+ 
+-	pr_debug("In MVC:camera_init\n");
++	pr_Dbg("In MVC:camera_init\n");
+ 
+ 	/* Register the device driver structure. */
+ 	err = platform_driver_register(&mxc_v4l2_driver);
+@@ -3018,7 +3029,7 @@
+  */
+ static void __exit camera_exit(void)
+ {
+-	pr_debug("In MVC: camera_exit\n");
++	pr_Dbg("In MVC: camera_exit\n");
+ 
+ 	platform_driver_unregister(&mxc_v4l2_driver);
+ }
+diff -Naur linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_capture.c linux-3.0.35/drivers/mxc/ipu3/ipu_capture.c
+--- linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_capture.c	2013-12-20 10:52:44.886319240 +0530
++++ linux-3.0.35/drivers/mxc/ipu3/ipu_capture.c	2013-12-16 20:50:20.000000000 +0530
+@@ -98,6 +98,7 @@
+ 		cfg_param.data_fmt = CSI_SENS_CONF_DATA_FMT_RGB_YUV444;
+ 		break;
+ 	case IPU_PIX_FMT_GENERIC:
++	case IPU_PIX_FMT_GENERIC_16:
+ 		cfg_param.data_fmt = CSI_SENS_CONF_DATA_FMT_BAYER;
+ 		break;
+ 	case IPU_PIX_FMT_RGB565:
+diff -Naur linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_common.c linux-3.0.35/drivers/mxc/ipu3/ipu_common.c
+--- linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_common.c	2013-12-20 10:52:44.886319240 +0530
++++ linux-3.0.35/drivers/mxc/ipu3/ipu_common.c	2013-12-16 20:50:20.000000000 +0530
+@@ -1165,7 +1165,8 @@
+ 			rot_mode);
+ 	} else if (_ipu_is_smfc_chan(dma_chan)) {
+ 		burst_size = _ipu_ch_param_get_burst_size(ipu, dma_chan);
+-		if ((pixel_fmt == IPU_PIX_FMT_GENERIC) &&
++		if (((pixel_fmt == IPU_PIX_FMT_GENERIC) ||
++		     (pixel_fmt == IPU_PIX_FMT_GENERIC_16)) &&
+ 			((_ipu_ch_param_get_bpp(ipu, dma_chan) == 5) ||
+ 			(_ipu_ch_param_get_bpp(ipu, dma_chan) == 3)))
+ 			burst_size = burst_size >> 4;
+@@ -2790,6 +2791,7 @@
+ 	case IPU_PIX_FMT_YUV444P:
+ 		return 1;
+ 		break;
++	case IPU_PIX_FMT_GENERIC_16:    /*generic data */
+ 	case IPU_PIX_FMT_RGB565:
+ 	case IPU_PIX_FMT_YUYV:
+ 	case IPU_PIX_FMT_UYVY:
+diff -Naur linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_param_mem.h linux-3.0.35/drivers/mxc/ipu3/ipu_param_mem.h
+--- linux-3.0.35_svn_6/drivers/mxc/ipu3/ipu_param_mem.h	2013-12-20 10:52:44.886319240 +0530
++++ linux-3.0.35/drivers/mxc/ipu3/ipu_param_mem.h	2013-12-16 20:50:20.000000000 +0530
+@@ -285,6 +285,13 @@
+ 		ipu_ch_param_set_field(&params, 1, 78, 7, 63);	/* burst size */
+ 
+ 		break;
++	case IPU_PIX_FMT_GENERIC_16:
++		/*Represents 16-bit Generic data */
++		ipu_ch_param_set_field(&params, 0, 107, 3, 3);  /* bits/pixel */
++		ipu_ch_param_set_field(&params, 1, 85, 4, 6);   /* pix format */
++		ipu_ch_param_set_field(&params, 1, 78, 7, 7);   /* burst size */
++
++		break;
+ 	case IPU_PIX_FMT_GENERIC_32:
+ 		/*Represents 32-bit Generic data */
+ 		break;
+@@ -695,6 +702,7 @@
+ 
+ 	switch (pixel_fmt) {
+ 	case IPU_PIX_FMT_GENERIC:
++	case IPU_PIX_FMT_GENERIC_16:
+ 	case IPU_PIX_FMT_GENERIC_32:
+ 	case IPU_PIX_FMT_RGB565:
+ 	case IPU_PIX_FMT_BGR24:
+diff -Naur linux-3.0.35_svn_6/include/linux/ipu.h linux-3.0.35/include/linux/ipu.h
+--- linux-3.0.35_svn_6/include/linux/ipu.h	2013-12-20 10:52:44.746319239 +0530
++++ linux-3.0.35/include/linux/ipu.h	2013-12-16 20:50:20.000000000 +0530
+@@ -94,6 +94,7 @@
+ /*! @{ */
+ #define IPU_PIX_FMT_GENERIC fourcc('I', 'P', 'U', '0')	/*!< IPU Generic Data */
+ #define IPU_PIX_FMT_GENERIC_32 fourcc('I', 'P', 'U', '1')	/*!< IPU Generic Data */
++#define IPU_PIX_FMT_GENERIC_16 fourcc('I', 'P', 'U', '2')      /*!< IPU Generic Data */
+ #define IPU_PIX_FMT_LVDS666 fourcc('L', 'V', 'D', '6')	/*!< IPU Generic Data */
+ #define IPU_PIX_FMT_LVDS888 fourcc('L', 'V', 'D', '8')	/*!< IPU Generic Data */
+ /*! @} */
+diff -Naur linux-3.0.35_svn_6/set-cross-envs linux-3.0.35/set-cross-envs
+--- linux-3.0.35_svn_6/set-cross-envs	1970-01-01 05:30:00.000000000 +0530
++++ linux-3.0.35/set-cross-envs	2013-12-16 20:50:20.000000000 +0530
+@@ -0,0 +1,3 @@
++export PATH=$PATH:/opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin
++export ARCH=arm
++export CROSS_COMPILE=arm-fsl-linux-gnueabi-

@@ -1,0 +1,1 @@
+cmd_drivers/media/video/mxc/capture/camera_sensor_clock.o := /opt/fsl-linaro-toolchain/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/media/video/mxc/capture/camera_sensor_clock.o drivers/media/video/mxc/capture/sensor_clock.o 

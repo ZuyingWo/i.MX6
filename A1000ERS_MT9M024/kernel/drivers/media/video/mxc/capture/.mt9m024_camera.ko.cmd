@@ -1,0 +1,1 @@
+cmd_drivers/media/video/mxc/capture/mt9m024_camera.ko := /opt/fsl-linaro-toolchain/bin/arm-none-linux-gnueabi-ld -EL -r  -T /home/mkajal/Desktop/CR/CR_2.1.2.8/src/kernel/linux-3.0.35/scripts/module-common.lds --build-id  -o drivers/media/video/mxc/capture/mt9m024_camera.ko drivers/media/video/mxc/capture/mt9m024_camera.o drivers/media/video/mxc/capture/mt9m024_camera.mod.o
